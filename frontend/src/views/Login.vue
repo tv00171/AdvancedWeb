@@ -43,38 +43,47 @@ export default {
              variant="tonal">{{ login_error }}
     </v-alert>
   </p>
-  <v-layout full-height>
-    <v-row no-gutters>
-      <v-col cols="6" style="height: 100%; width: 100%">
-        <v-card color="primary" rounded style="border-top-right-radius: 7%; border-bottom-right-radius: 7%"
-                height="100%">
-          <v-card-text>
-            <v-container fluid style="text-align: center" class="ma-auto">
-              <v-img class="ma-2" src="@/assets/login_image.svg" aspect-ratio="2"></v-img>
-              <h2 style="width: 400px;" class="mx-auto mt-6"> Shop with Swift for a seamless and swift experience</h2>
-              <p style="width: 400px; font-size: 16px" class="mx-auto mt-6">Access products and services by logging in
-                or
-                signing up. Enjoy
-                a personalised experience, exclusive orders and easy order management</p>
-            </v-container>
-          </v-card-text>
-        </v-card>
-      </v-col>
-      <v-col style="align-self: center">
-        <v-card class="ma-auto pa-3" elevation="4" height="300" width="600">
-          <v-card-title>
-            Log in
-          </v-card-title>
+  <v-row no-gutters>
+    <v-col>
+      <v-card color="primary" rounded
+              style="border-top-right-radius: 7%; border-bottom-right-radius: 7%;
+         " height="100vh">
+        <v-card-text>
+          <v-img class="ma-2" src="@/assets/login_image.svg" aspect-ratio="2"></v-img>
+          <h2 style="width: 400px;" class="mx-auto mt-6"> Shop with Swift for a seamless and swift experience</h2>
+          <p style="width: 400px; font-size: 16px" class="mx-auto mt-6">Access products and services by logging in
+            or
+            signing up. Enjoy
+            a personalised experience, exclusive orders and easy order management</p>
+        </v-card-text>
+      </v-card>
+    </v-col>
+    <v-col style="align-self: center">
+      <v-card class="ma-auto pa-3" elevation="0" width="550">
+        <v-card-title>
+          <v-img src="@/assets/logo.png" aspect-ratio="8"></v-img>
+          <h1 style="align-self: center; text-align: center" class="ma-auto mt-6">Login</h1>
+        </v-card-title>
+        <v-card-subtitle>
+          <p style="text-align: center" class="mt-2">
+            Enter your email address and password to login
+          </p>
+        </v-card-subtitle>
+        <v-card-text>
           <v-form
             ref="form"
             v-model="valid"
             lazy-validation
           >
             <v-text-field
+              class="mt-4"
               id="email"
               :rules="[v => !!v || 'Required']"
               label="Name"
               required
+              variant="solo"
+              color="primary"
+              style="border-radius: 30%"
             ></v-text-field>
 
             <v-text-field
@@ -82,23 +91,27 @@ export default {
               :rules="[v=> !!v || 'Required',v => (v && v.length >= 2) || 'Too short']"
               label="Password"
               required
+              variant="solo"
+              color="primary"
               type="password"
             ></v-text-field>
             <v-btn
               :loading="isLoading"
-              class="mx-auto"
+              class="mx-auto mt-3"
               color="primary"
               @click="onSubmit"
+              block
             >
               Login
             </v-btn>
           </v-form>
-          <v-card-text class="px-0">
-            <a href="/sign-up"> Register
-            </a>
-          </v-card-text>
-        </v-card>
-      </v-col>
-    </v-row>
-  </v-layout>
+        </v-card-text>
+        <v-card-subtitle class="mt-3">
+          Don't have an account yet?
+          <a href="LETSGO" style="text-decoration: none;">Sign Up</a>
+        </v-card-subtitle>
+      </v-card>
+    </v-col>
+
+  </v-row>
 </template>
