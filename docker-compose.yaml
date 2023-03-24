@@ -1,0 +1,11 @@
+version: "3.9"
+services:
+  db:
+    image: mysql/mysql-server
+    ports:
+      - "6603:3306"
+    volumes:
+      - ./authentication_service/db:/var/lib/mysql
+    container_name: auth_db
+    environment:
+      MYSQL_ROOT_PASSWORD: AWTPassword

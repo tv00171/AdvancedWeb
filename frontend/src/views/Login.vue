@@ -56,12 +56,15 @@ export default {
             signing up. Enjoy
             a personalised experience, exclusive orders and easy order management</p>
         </v-card-text>
+        <v-card-actions>
+          <v-progress-linear style="width: 400px" striped model-value="50"></v-progress-linear>
+        </v-card-actions>
       </v-card>
     </v-col>
-    <v-col style="align-self: center">
-      <v-card class="ma-auto pa-3" elevation="0" width="550">
+    <v-col>
+      <v-img src="@/assets/name_logo.svg" aspect-ratio="6" class="mt-6"></v-img>
+      <v-card style="align-self: center" class="ma-auto pa-3" elevation="0" width="550">
         <v-card-title>
-          <v-img src="@/assets/logo.png" aspect-ratio="8"></v-img>
           <h1 style="align-self: center; text-align: center" class="ma-auto mt-6">Login</h1>
         </v-card-title>
         <v-card-subtitle>
@@ -108,7 +111,7 @@ export default {
         </v-card-text>
         <v-card-subtitle class="mt-3">
           Don't have an account yet?
-          <a href="LETSGO" style="text-decoration: none;">Sign Up</a>
+          <a href="/signup" style="text-decoration: none;">Sign Up</a>
         </v-card-subtitle>
       </v-card>
     </v-col>
