@@ -5,200 +5,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d6433bd5-9917-4825-a17d-07331f04b246" name="Changes" comment="Made login UI">
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/authentication_service/.env" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/authentication_service/db/#ib_16384_0.dblwr" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/authentication_service/db/#ib_16384_1.dblwr" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/authentication_service/db/#innodb_redo/#ib_redo10_tmp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/authentication_service/db/#innodb_redo/#ib_redo11_tmp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/authentication_service/db/#innodb_redo/#ib_redo12_tmp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/authentication_service/db/#innodb_redo/#ib_redo13_tmp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/authentication_service/db/#innodb_redo/#ib_redo14_tmp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/authentication_service/db/#innodb_redo/#ib_redo15_tmp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/authentication_service/db/#innodb_redo/#ib_redo16_tmp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/authentication_service/db/#innodb_redo/#ib_redo17_tmp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/authentication_service/db/#innodb_redo/#ib_redo18_tmp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/authentication_service/db/#innodb_redo/#ib_redo19_tmp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/authentication_service/db/#innodb_redo/#ib_redo20_tmp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/authentication_service/db/#innodb_redo/#ib_redo21_tmp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/authentication_service/db/#innodb_redo/#ib_redo22_tmp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/authentication_service/db/#innodb_redo/#ib_redo23_tmp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/authentication_service/db/#innodb_redo/#ib_redo24_tmp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/authentication_service/db/#innodb_redo/#ib_redo25_tmp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/authentication_service/db/#innodb_redo/#ib_redo26_tmp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/authentication_service/db/#innodb_redo/#ib_redo27_tmp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/authentication_service/db/#innodb_redo/#ib_redo28_tmp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/authentication_service/db/#innodb_redo/#ib_redo29_tmp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/authentication_service/db/#innodb_redo/#ib_redo30_tmp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/authentication_service/db/#innodb_redo/#ib_redo31_tmp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/authentication_service/db/#innodb_redo/#ib_redo32_tmp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/authentication_service/db/#innodb_redo/#ib_redo33_tmp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/authentication_service/db/#innodb_redo/#ib_redo34_tmp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/authentication_service/db/#innodb_redo/#ib_redo35_tmp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/authentication_service/db/#innodb_redo/#ib_redo36_tmp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/authentication_service/db/#innodb_redo/#ib_redo37_tmp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/authentication_service/db/#innodb_redo/#ib_redo38_tmp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/authentication_service/db/#innodb_redo/#ib_redo39_tmp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/authentication_service/db/#innodb_redo/#ib_redo40_tmp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/authentication_service/db/#innodb_redo/#ib_redo9" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/authentication_service/db/auto.cnf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/authentication_service/db/binlog.000001" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/authentication_service/db/binlog.000002" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/authentication_service/db/binlog.000003" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/authentication_service/db/binlog.000004" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/authentication_service/db/binlog.000005" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/authentication_service/db/binlog.index" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/authentication_service/db/ca-key.pem" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/authentication_service/db/ca.pem" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/authentication_service/db/client-cert.pem" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/authentication_service/db/client-key.pem" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/authentication_service/db/ib_buffer_pool" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/authentication_service/db/ibdata1" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/authentication_service/db/mysql.ibd" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/authentication_service/db/mysql/general_log.CSM" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/authentication_service/db/mysql/general_log.CSV" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/authentication_service/db/mysql/general_log_213.sdi" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/authentication_service/db/mysql/slow_log.CSM" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/authentication_service/db/mysql/slow_log.CSV" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/authentication_service/db/mysql/slow_log_214.sdi" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/authentication_service/db/performance_schema/accounts_145.sdi" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/authentication_service/db/performance_schema/binary_log_trans_189.sdi" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/authentication_service/db/performance_schema/cond_instances_82.sdi" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/authentication_service/db/performance_schema/data_lock_waits_161.sdi" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/authentication_service/db/performance_schema/data_locks_160.sdi" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/authentication_service/db/performance_schema/error_log_83.sdi" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/authentication_service/db/performance_schema/events_errors_su_139.sdi" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/authentication_service/db/performance_schema/events_errors_su_140.sdi" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/authentication_service/db/performance_schema/events_errors_su_141.sdi" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/authentication_service/db/performance_schema/events_errors_su_142.sdi" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/authentication_service/db/performance_schema/events_errors_su_143.sdi" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/authentication_service/db/performance_schema/events_stages_cu_111.sdi" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/authentication_service/db/performance_schema/events_stages_hi_112.sdi" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/authentication_service/db/performance_schema/events_stages_hi_113.sdi" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/authentication_service/db/performance_schema/events_stages_su_114.sdi" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/authentication_service/db/performance_schema/events_stages_su_115.sdi" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/authentication_service/db/performance_schema/events_stages_su_116.sdi" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/authentication_service/db/performance_schema/events_stages_su_117.sdi" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/authentication_service/db/performance_schema/events_stages_su_118.sdi" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/authentication_service/db/performance_schema/events_statement_119.sdi" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/authentication_service/db/performance_schema/events_statement_120.sdi" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/authentication_service/db/performance_schema/events_statement_121.sdi" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/authentication_service/db/performance_schema/events_statement_122.sdi" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/authentication_service/db/performance_schema/events_statement_123.sdi" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/authentication_service/db/performance_schema/events_statement_124.sdi" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/authentication_service/db/performance_schema/events_statement_125.sdi" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/authentication_service/db/performance_schema/events_statement_126.sdi" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/authentication_service/db/performance_schema/events_statement_127.sdi" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/authentication_service/db/performance_schema/events_statement_128.sdi" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/authentication_service/db/performance_schema/events_statement_129.sdi" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/authentication_service/db/performance_schema/events_statement_130.sdi" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/authentication_service/db/performance_schema/events_transacti_131.sdi" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/authentication_service/db/performance_schema/events_transacti_132.sdi" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/authentication_service/db/performance_schema/events_transacti_133.sdi" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/authentication_service/db/performance_schema/events_transacti_134.sdi" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/authentication_service/db/performance_schema/events_transacti_135.sdi" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/authentication_service/db/performance_schema/events_transacti_136.sdi" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/authentication_service/db/performance_schema/events_transacti_137.sdi" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/authentication_service/db/performance_schema/events_transacti_138.sdi" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/authentication_service/db/performance_schema/events_waits_cur_84.sdi" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/authentication_service/db/performance_schema/events_waits_his_85.sdi" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/authentication_service/db/performance_schema/events_waits_his_86.sdi" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/authentication_service/db/performance_schema/events_waits_sum_87.sdi" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/authentication_service/db/performance_schema/events_waits_sum_88.sdi" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/authentication_service/db/performance_schema/events_waits_sum_89.sdi" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/authentication_service/db/performance_schema/events_waits_sum_90.sdi" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/authentication_service/db/performance_schema/events_waits_sum_91.sdi" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/authentication_service/db/performance_schema/events_waits_sum_92.sdi" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/authentication_service/db/performance_schema/file_instances_93.sdi" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/authentication_service/db/performance_schema/file_summary_by__94.sdi" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/authentication_service/db/performance_schema/file_summary_by__95.sdi" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/authentication_service/db/performance_schema/global_status_181.sdi" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/authentication_service/db/performance_schema/global_variables_184.sdi" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/authentication_service/db/performance_schema/host_cache_96.sdi" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/authentication_service/db/performance_schema/hosts_146.sdi" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/authentication_service/db/performance_schema/keyring_componen_191.sdi" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/authentication_service/db/performance_schema/keyring_keys_152.sdi" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/authentication_service/db/performance_schema/log_status_174.sdi" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/authentication_service/db/performance_schema/memory_summary_b_154.sdi" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/authentication_service/db/performance_schema/memory_summary_b_155.sdi" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/authentication_service/db/performance_schema/memory_summary_b_156.sdi" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/authentication_service/db/performance_schema/memory_summary_b_157.sdi" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/authentication_service/db/performance_schema/memory_summary_g_153.sdi" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/authentication_service/db/performance_schema/metadata_locks_159.sdi" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/authentication_service/db/performance_schema/mutex_instances_97.sdi" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/authentication_service/db/performance_schema/objects_summary__98.sdi" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/authentication_service/db/performance_schema/performance_time_99.sdi" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/authentication_service/db/performance_schema/persisted_variab_187.sdi" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/authentication_service/db/performance_schema/prepared_stateme_175.sdi" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/authentication_service/db/performance_schema/processlist_100.sdi" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/authentication_service/db/performance_schema/replication_appl_165.sdi" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/authentication_service/db/performance_schema/replication_appl_166.sdi" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/authentication_service/db/performance_schema/replication_appl_167.sdi" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/authentication_service/db/performance_schema/replication_appl_168.sdi" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/authentication_service/db/performance_schema/replication_appl_170.sdi" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/authentication_service/db/performance_schema/replication_appl_171.sdi" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/authentication_service/db/performance_schema/replication_asyn_172.sdi" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/authentication_service/db/performance_schema/replication_asyn_173.sdi" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/authentication_service/db/performance_schema/replication_conn_162.sdi" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/authentication_service/db/performance_schema/replication_conn_164.sdi" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/authentication_service/db/performance_schema/replication_grou_163.sdi" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/authentication_service/db/performance_schema/replication_grou_169.sdi" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/authentication_service/db/performance_schema/rwlock_instances_101.sdi" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/authentication_service/db/performance_schema/session_account__151.sdi" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/authentication_service/db/performance_schema/session_connect__150.sdi" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/authentication_service/db/performance_schema/session_status_182.sdi" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/authentication_service/db/performance_schema/session_variable_185.sdi" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/authentication_service/db/performance_schema/setup_actors_102.sdi" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/authentication_service/db/performance_schema/setup_consumers_103.sdi" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/authentication_service/db/performance_schema/setup_instrument_104.sdi" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/authentication_service/db/performance_schema/setup_objects_105.sdi" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/authentication_service/db/performance_schema/setup_threads_106.sdi" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/authentication_service/db/performance_schema/socket_instances_147.sdi" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/authentication_service/db/performance_schema/socket_summary_b_148.sdi" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/authentication_service/db/performance_schema/socket_summary_b_149.sdi" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/authentication_service/db/performance_schema/status_by_accoun_177.sdi" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/authentication_service/db/performance_schema/status_by_host_178.sdi" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/authentication_service/db/performance_schema/status_by_thread_179.sdi" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/authentication_service/db/performance_schema/status_by_user_180.sdi" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/authentication_service/db/performance_schema/table_handles_158.sdi" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/authentication_service/db/performance_schema/table_io_waits_s_107.sdi" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/authentication_service/db/performance_schema/table_io_waits_s_108.sdi" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/authentication_service/db/performance_schema/table_lock_waits_109.sdi" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/authentication_service/db/performance_schema/threads_110.sdi" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/authentication_service/db/performance_schema/tls_channel_stat_190.sdi" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/authentication_service/db/performance_schema/user_defined_fun_188.sdi" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/authentication_service/db/performance_schema/user_variables_b_176.sdi" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/authentication_service/db/performance_schema/users_144.sdi" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/authentication_service/db/performance_schema/variables_by_thr_183.sdi" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/authentication_service/db/performance_schema/variables_info_186.sdi" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/authentication_service/db/private_key.pem" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/authentication_service/db/public_key.pem" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/authentication_service/db/server-cert.pem" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/authentication_service/db/server-key.pem" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/authentication_service/db/sys/sys_config.ibd" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/authentication_service/db/undo_001" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/authentication_service/db/undo_002" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/authentication_service/src/helpers/authentication_helper.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/authentication_service/src/helpers/db_connection.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/authentication_service/src/models/BaseError.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/authentication_service/src/models/UserModel.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/authentication_service/src/routes/authRoute.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/authentication_service/src/services/authService.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docker-compose.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/assets/name_logo.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/assets/signup_image.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/views/Signup.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/authentication_service/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/authentication_service/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/authentication_service/pnpm-lock.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/authentication_service/pnpm-lock.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/authentication_service/src/app.ts" beforeDir="false" afterPath="$PROJECT_DIR$/authentication_service/src/app.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/authentication_service/src/server.ts" beforeDir="false" afterPath="$PROJECT_DIR$/authentication_service/src/server.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/authentication_service/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/authentication_service/yarn.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/plugins/vuetify.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/plugins/vuetify.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/router/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/router/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/views/Login.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/views/Login.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/authentication_service/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/authentication_service/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/authentication_service/db/#innodb_temp/temp_1.ibt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/authentication_service/db/#innodb_temp/temp_10.ibt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/authentication_service/db/#innodb_temp/temp_2.ibt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/authentication_service/db/#innodb_temp/temp_3.ibt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/authentication_service/db/#innodb_temp/temp_4.ibt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/authentication_service/db/#innodb_temp/temp_5.ibt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/authentication_service/db/#innodb_temp/temp_6.ibt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/authentication_service/db/#innodb_temp/temp_7.ibt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/authentication_service/db/#innodb_temp/temp_8.ibt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/authentication_service/db/#innodb_temp/temp_9.ibt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/authentication_service/db/binlog.000007" beforeDir="false" afterPath="$PROJECT_DIR$/authentication_service/db/binlog.000007" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/authentication_service/db/ib_buffer_pool" beforeDir="false" afterPath="$PROJECT_DIR$/authentication_service/db/ib_buffer_pool" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/authentication_service/db/ibdata1" beforeDir="false" afterPath="$PROJECT_DIR$/authentication_service/db/ibdata1" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/authentication_service/db/ibtmp1" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/authentication_service/db/mysql.sock.lock" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -272,7 +95,7 @@
       <workItem from="1678294045629" duration="1868000" />
       <workItem from="1678295933294" duration="1602000" />
       <workItem from="1678533335733" duration="9954000" />
-      <workItem from="1679243244606" duration="11823000" />
+      <workItem from="1679243244606" duration="15032000" />
     </task>
     <task id="LOCAL-00001" summary="Setup frontend and setup authentication service">
       <created>1678295773266</created>
