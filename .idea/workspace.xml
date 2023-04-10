@@ -6,22 +6,15 @@
   <component name="ChangeListManager">
     <list default="true" id="d6433bd5-9917-4825-a17d-07331f04b246" name="Changes" comment="Made login UI">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/authentication_service/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/authentication_service/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/authentication_service/db/#innodb_temp/temp_1.ibt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/authentication_service/db/#innodb_temp/temp_10.ibt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/authentication_service/db/#innodb_temp/temp_2.ibt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/authentication_service/db/#innodb_temp/temp_3.ibt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/authentication_service/db/#innodb_temp/temp_4.ibt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/authentication_service/db/#innodb_temp/temp_5.ibt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/authentication_service/db/#innodb_temp/temp_6.ibt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/authentication_service/db/#innodb_temp/temp_7.ibt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/authentication_service/db/#innodb_temp/temp_8.ibt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/authentication_service/db/#innodb_temp/temp_9.ibt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/authentication_service/db/binlog.000007" beforeDir="false" afterPath="$PROJECT_DIR$/authentication_service/db/binlog.000007" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/authentication_service/db/#ib_16384_0.dblwr" beforeDir="false" afterPath="$PROJECT_DIR$/authentication_service/db/#ib_16384_0.dblwr" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/authentication_service/db/#innodb_redo/#ib_redo9" beforeDir="false" afterPath="$PROJECT_DIR$/authentication_service/db/#innodb_redo/#ib_redo9" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/authentication_service/db/binlog.index" beforeDir="false" afterPath="$PROJECT_DIR$/authentication_service/db/binlog.index" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/authentication_service/db/ib_buffer_pool" beforeDir="false" afterPath="$PROJECT_DIR$/authentication_service/db/ib_buffer_pool" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/authentication_service/db/ibdata1" beforeDir="false" afterPath="$PROJECT_DIR$/authentication_service/db/ibdata1" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/authentication_service/db/ibtmp1" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/authentication_service/db/mysql.sock.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/authentication_service/db/mysql.ibd" beforeDir="false" afterPath="$PROJECT_DIR$/authentication_service/db/mysql.ibd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/authentication_service/db/undo_001" beforeDir="false" afterPath="$PROJECT_DIR$/authentication_service/db/undo_001" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/authentication_service/db/undo_002" beforeDir="false" afterPath="$PROJECT_DIR$/authentication_service/db/undo_002" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/router/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/router/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,24 +45,24 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "javascript.nodejs.core.library.configured.version": "19.4.0",
-    "javascript.nodejs.core.library.typings.version": "18.14.6",
-    "last_opened_file_path": "/Users/toni/Documents/University/AdvancedWeb/authentication_service/src/models",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "pnpm",
-    "settings.editor.selected.configurable": "actions.on.save",
-    "ts.external.directory.path": "/Users/toni/Documents/University/AdvancedWeb/authentication_service/node_modules/typescript/lib",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;javascript.nodejs.core.library.configured.version&quot;: &quot;19.4.0&quot;,
+    &quot;javascript.nodejs.core.library.typings.version&quot;: &quot;18.14.6&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/toni/Documents/University/AdvancedWeb/authentication_service/src/models&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;pnpm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;actions.on.save&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;/Users/toni/Documents/University/AdvancedWeb/authentication_service/node_modules/typescript/lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/authentication_service/src/models" />
@@ -95,7 +88,9 @@
       <workItem from="1678294045629" duration="1868000" />
       <workItem from="1678295933294" duration="1602000" />
       <workItem from="1678533335733" duration="9954000" />
-      <workItem from="1679243244606" duration="15032000" />
+      <workItem from="1679243244606" duration="15701000" />
+      <workItem from="1680186773014" duration="125000" />
+      <workItem from="1681128258896" duration="2935000" />
     </task>
     <task id="LOCAL-00001" summary="Setup frontend and setup authentication service">
       <created>1678295773266</created>
