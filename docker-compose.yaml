@@ -9,3 +9,13 @@ services:
     container_name: auth_db
     environment:
       MYSQL_ROOT_PASSWORD: AWTPassword
+
+  db-ross:
+    image: mysql/mysql-server
+    ports:
+      - "6604:3306"
+    volumes:
+      - ./posting_service/db:/var/lib/mysql
+    container_name: post_db
+    environment:
+      MYSQL_ROOT_PASSWORD: AWTPassword
