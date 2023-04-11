@@ -1,10 +1,9 @@
 <template>
   <v-toolbar app dense color="white" dark elevation="2" height="90">
     <v-toolbar-title class="logo_size">
-      <img src="@/assets/name_logo.svg" alt="Logo" height="98"/>
+      <img src="@/assets/name_logo.svg" alt="Logo" height="96"/>
     </v-toolbar-title>
-    <SearchBar class="searchbar"></SearchBar>
-    <v-spacer></v-spacer>
+    <SearchBar class="searchbar stretch-search-bar" :width="'100%'"></SearchBar>
     <v-btn icon class="icon-button">
       <v-icon size="26">mdi-message</v-icon>
     </v-btn>
@@ -44,5 +43,11 @@ export default {
   display: flex;
   align-items: center;
   width: 100%;
+}
+
+.searchbar.stretch-search-bar {
+  flex-grow: 1;
+  margin-left: 0px; /* Adjust this value to set the desired space between the logo and search bar */
+  margin-right: 500px; /* Adjust this value to set the desired space between the search bar and the icons */
 }
 </style>
