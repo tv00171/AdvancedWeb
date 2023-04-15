@@ -44,4 +44,36 @@ routes.post('/register', async (req, res) => {
         return res.status(500).json({success: false, error: e.toString(), errno: 0})
     }
 });
+
+routes.post('/validateToken', async (req, res) => {
+    try {
+        const {token} = req.body;
+        if (token == null) {
+            throw new BaseError({error: "Missing email, password or name", errno: 3, status: 400})
+        }
+        const result = await AuthService.isTokenValid(token);
+        return res.json({success: true, isTokenValid: result});
+    } catch (e) {
+        if (e instanceof BaseError) {
+            return res.status(e.status).json(e.toJSON())
+        }
+        return res.status(500).json({success: false, error: e.toString(), errno: 0})
+    }
+});
+
+routes.get('/userInfo',async (req, res) => {
+    try {
+        const userId = req.query.id;
+        if (userId == null) {
+            throw new BaseError({error: "Missing userId", errno: 3, status: 400})
+        }
+        const result = await AuthService.getUser({id: +userId});
+        return res.json({success: true, payload: result});
+    } catch (e) {
+        if (e instanceof BaseError) {
+            return res.status(e.status).json(e.toJSON())
+        }
+        return res.status(500).json({success: false, error: e.toString(), errno: 0})
+    }
+});
 export default routes;
