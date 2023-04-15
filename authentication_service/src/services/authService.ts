@@ -11,7 +11,13 @@ export default class AuthService {
      * @param password
      */
     static async login(email: string, password: string) {
-        const user = await this.getUser({email: email})
+        let user;
+        try{
+            user = await this.getUser({email: email})
+        }
+        catch (e){
+            throw new BaseError({error: e, errno: 4, status: 401})
+        }
         if (user == null) {
             throw new BaseError({error: "User not found", errno: 4, status: 401})
         }

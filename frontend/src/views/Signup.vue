@@ -20,14 +20,15 @@ export default {
         this.isLoading = true;
 
         // Make the api call to login
-        const loginResponse = await axios.get('/', {
-          // email:  this.$refs.form.email.value,
-          // password: this.$refs.form.password.value
+        const loginResponse = await axios.post('/register', {
+          email:  this.$refs.form.email.value,
+          password: this.$refs.form.password.value,
+          name: this.$refs.form.name.value
         });
 
         localStorage.setItem('user', JSON.stringify(loginResponse))
         // Push the application to the home page
-        await router.push('/dashboard/');
+        await router.push('/home/');
       } catch (e) {
         this.signup_error = e;
       } finally {
@@ -79,6 +80,16 @@ export default {
             <v-text-field
               class="mt-4"
               id="email"
+              :rules="[v => !!v || 'Required']"
+              label="Email"
+              required
+              variant="solo"
+              color="primary"
+              style="border-radius: 30%"
+            ></v-text-field>
+            <v-text-field
+              class="mt-4"
+              id="name"
               :rules="[v => !!v || 'Required']"
               label="Name"
               required

@@ -83,3 +83,10 @@ yarn dev
 To run the databse run the following commands:
 
 ```docker-compose up -d db```
+
+<h1>Access credentials</h1>
+A test account is available for use:
+
+`email: t1@gmail.com`
+
+`password: 123`
