@@ -14,6 +14,18 @@ const routes = [
     path: '/home',
     component: () => import('@/views/Home.vue'),
   },
+  
+  {
+    path: '/products',
+    component: () => import('@/views/ProductList.vue'),
+  },
+  
+  {
+    
+    path: '/product/:action/:id?',
+    component: () => import('@/views/ProductForm.vue'),
+  },
+
 ]
 
 const router = createRouter({

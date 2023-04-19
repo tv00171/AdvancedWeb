@@ -36,3 +36,11 @@ export const init = async () => {
         database: process.env.MY_SQL_DB_DATABASE,
     })
 };
+
+export const pool = mysql.createPool({
+        host: process.env.MY_SQL_DB_HOST,
+        user: "root",
+        password: "AWTPassword",
+        port: 6604,
+        database: "posts",
+});

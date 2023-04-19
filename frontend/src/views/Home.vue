@@ -4,7 +4,7 @@
     <v-main>
       <v-container>
         <v-row>
-          <v-col v-for="item in items" :key="item.id" cols="12" sm="6" md="4" lg="3" class="tight-column">
+          <v-col v-for="item in items" :key="item.id" cols="12" sm="6" md="4" lg="3">
             <Card :item="item" />
           </v-col>
         </v-row>
@@ -29,25 +29,7 @@ export default {
         {
           id: 1,
           name: 'Item 1',
-          image: '@/assets/name_logo.svg',
-          price: '$100',
-        },
-        {
-          id: 1,
-          name: 'Item 1',
-          image: '@/assets/name_logo.svg',
-          price: '$100',
-        },
-        {
-          id: 1,
-          name: 'Item 1',
-          image: '@/assets/name_logo.svg',
-          price: '$100',
-        },
-        {
-          id: 1,
-          name: 'Item 1',
-          image: '@/assets/name_logo.svg',
+          image: 'path/to/image1.jpg',
           price: '$100',
         },
         // Add more items
@@ -57,9 +39,4 @@ export default {
 };
 </script>
 
-<style scoped>
-.tight-column {
-  padding-left: 70px;
-}
-</style>
 
