@@ -1,5 +1,5 @@
 {
-  "name": "authentication_service",
+  "name": "posting_service",
   "version": "1.0.0",
   "description": "",
   "main": "src/server.ts",
@@ -8,7 +8,7 @@
     "dev": "nodemon src/server.ts",
     "start": "nodemon dist/server.ts"
   },
-  "author": "Toni",
+  "author": "Ross",
   "license": "ISC",
   "dependencies": {
     "cors": "^2.8.5",

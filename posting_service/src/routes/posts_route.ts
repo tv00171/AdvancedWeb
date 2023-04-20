@@ -19,15 +19,6 @@ routes.get('/allPosts', async (req, res) => {
     return res.json({message: result})
 })
 
-routes.get('/userPosts', async (req, res) => {
-    return res.json({message: "Hello"})
-    await query("SElECT * FROM ")
-})
-routes.delete('/post', async (req, res) => {
-    return res.json({message: "Hello"})
-    await query("SElECT * FROM ")
-})
-
 // products
 routes.post('/products/create', async (req, res) => {
     const { name, user_id, description, price } = req.body;
@@ -54,7 +45,6 @@ routes.post('/products/get', async (req, res) => {
         res.status(500).json({ message: 'SEVER ERROR', error });
     }
 })
-
 
 routes.post('/products/delete', async (req, res) => {
     const { user_id, product_id } = req.body; 
