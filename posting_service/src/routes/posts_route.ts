@@ -19,6 +19,22 @@ routes.get('/allPosts', async (req, res) => {
     return res.json({message: result})
 })
 
+routes.get('/userPosts', async (req, res) => {
+    return res.json({message: "Hello"})
+    await query("SElECT * FROM ")
+})
+
+routes.get('/posts', async (req, res) => {
+    const query = 'SELECT * FROM posts';
+
+    try {
+        const result = await pool.query(query, []);
+        res.json({ status: true, data: result[0] });
+    } catch (error) {
+        res.status(500).json({ message: 'SEVER ERROR', error });
+    }
+})
+
 // products
 routes.post('/products/create', async (req, res) => {
     const { name, user_id, description, price } = req.body;
