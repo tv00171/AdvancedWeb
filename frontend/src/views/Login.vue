@@ -25,7 +25,6 @@ export default {
           password: this.$refs.form.password.value
         });
 
-        console.log(loginResponse)
 
         localStorage.setItem('user', JSON.stringify(loginResponse))
         // Push the application to the home page

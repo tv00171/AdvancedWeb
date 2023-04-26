@@ -7,8 +7,6 @@ routes.get('/allPosts', async (req, res) => {
     // Get body of the request
     const name = req.body.name
 
-    //Access the user info that made the request
-    console.log(res.locals.user);
 
     // Make call to the db
     const result = await query("SElECT * FROM posts WHERE id = ? AND name =  ?", [1, 'test'])

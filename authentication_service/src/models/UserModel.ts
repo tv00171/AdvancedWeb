@@ -46,7 +46,6 @@ export default class UserModel {
 
     static fromJSON(json: any) {
         try {
-            console.log(json)
             return new UserModel({
                 id: json.id,
                 email: json.email,
@@ -56,7 +55,6 @@ export default class UserModel {
                 refresh_token: json.refresh_token ?? null,
             });
         } catch (e: any) {
-            console.log(e)
             throw new BaseError({error: e, errno: 6});
         }
     }
