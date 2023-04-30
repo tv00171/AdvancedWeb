@@ -31,7 +31,7 @@ routes.get('/posts', async (req, res) => {
         const result = await pool.query(query, []);
         res.json({ status: true, data: result[0] });
     } catch (error) {
-        res.status(500).json({ message: 'SEVER ERROR', error });
+        res.status(500).json({ message: 'SERVER ERROR', error });
     }
 })
 
@@ -58,7 +58,7 @@ routes.post('/products/get', async (req, res) => {
         const result = await pool.query(query, [user_id]);
         res.json({ status: true, data: result[0] });
     } catch (error) {
-        res.status(500).json({ message: 'SEVER ERROR', error });
+        res.status(500).json({ message: 'SERVER ERROR', error });
     }
 })
 
@@ -76,7 +76,7 @@ routes.post('/products/delete', async (req, res) => {
             res.status(200).json({ status: true, message: `Deleted product with ID ${product_id}`});
         }
     } catch (error) {
-        res.status(500).json({ message: 'SEVER ERROR', error });
+        res.status(500).json({ message: 'SERVER ERROR', error });
     }
 })
 
@@ -94,7 +94,7 @@ routes.post('/products/edit', async (req, res) => {
             res.status(200).json({ status: true, message: `Product with ID: ${product_id} has been updated`});
         }
     } catch (error) {
-        res.status(500).json({ message: 'SEVER ERROR', error });
+        res.status(500).json({ message: 'SERVER ERROR', error });
     }
 })
 
