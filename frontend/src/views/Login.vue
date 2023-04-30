@@ -25,7 +25,6 @@ export default {
           password: this.$refs.form.password.value
         });
 
-
         localStorage.setItem('user', JSON.stringify(loginResponse))
         // Push the application to the home page
         await router.push('/home/');
