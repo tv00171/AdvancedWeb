@@ -1,14 +1,30 @@
 version: "3.9"
 services:
-  db:
+  auth_db:
     image: mysql/mysql-server
     ports:
-      - "6603:3306"
+      - "3306:3306"
     volumes:
       - ./authentication_service/db:/var/lib/mysql
     container_name: auth_db
     environment:
       MYSQL_ROOT_PASSWORD: AWTPassword
+      MYSQL_TCP_PORT: 3306
+
+  auth_service:
+    build: ./authentication_service
+    ports:
+      - "4444:4444"
+    container_name: auth_service
+    environment:
+      MY_SQL_DB_HOST: auth_db
+      MY_SQL_DB_USER: root
+      MY_SQL_DB_PASSWORD: AWTPassword
+      MY_SQL_DB_DATABASE: auth
+      MY_SQL_DB_PORT: 3306
+
+    links:
+      - auth_db
 
   db-ross:
     image: mysql/mysql-server

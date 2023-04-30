@@ -20,14 +20,15 @@ export default {
         this.isLoading = true;
 
         // Make the api call to login
-        const loginResponse = await axios.get('/', {
-          // email:  this.$refs.form.email.value,
-          // password: this.$refs.form.password.value
+        const loginResponse = await axios.post('/login', {
+          email:  this.$refs.form.email.value,
+          password: this.$refs.form.password.value
         });
+
 
         localStorage.setItem('user', JSON.stringify(loginResponse))
         // Push the application to the home page
-        await router.push('/dashboard/');
+        await router.push('/home/');
       } catch (e) {
         this.login_error = e;
       } finally {
@@ -38,11 +39,6 @@ export default {
 }
 </script>
 <template>
-  <p>
-    <v-alert v-if="login_error != null" v-model:model-value="login_error" border class="ma-2" closable type="error"
-             variant="tonal">{{ login_error }}
-    </v-alert>
-  </p>
   <v-row no-gutters>
     <v-col>
       <v-card color="primary" rounded
@@ -62,7 +58,13 @@ export default {
       </v-card>
     </v-col>
     <v-col>
+      <p>
+        <v-alert v-if="login_error != null" v-model:model-value="login_error" border class="ma-2" closable type="error"
+                 variant="tonal">{{ login_error }}
+        </v-alert>
+      </p>
       <v-img src="@/assets/name_logo.svg" aspect-ratio="6" class="mt-6"></v-img>
+
       <v-card style="align-self: center" class="ma-auto pa-3" elevation="0" width="550">
         <v-card-title>
           <h1 style="align-self: center; text-align: center" class="ma-auto mt-6">Login</h1>
@@ -71,8 +73,10 @@ export default {
           <p style="text-align: center" class="mt-2">
             Enter your email address and password to login
           </p>
+
         </v-card-subtitle>
         <v-card-text>
+
           <v-form
             ref="form"
             v-model="valid"
@@ -82,7 +86,7 @@ export default {
               class="mt-4"
               id="email"
               :rules="[v => !!v || 'Required']"
-              label="Name"
+              label="Email"
               required
               variant="solo"
               color="primary"
@@ -91,7 +95,7 @@ export default {
 
             <v-text-field
               id="password"
-              :rules="[v=> !!v || 'Required',v => (v && v.length >= 2) || 'Too short']"
+              :rules="[v=> !!v || 'Required']"
               label="Password"
               required
               variant="solo"

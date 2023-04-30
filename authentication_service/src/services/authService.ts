@@ -4,18 +4,26 @@ import BaseError from "../models/BaseError";
 import UserModel from "../models/UserModel";
 
 export default class AuthService {
-
     /**
      * Logs the user in using the email and a password
      * @param email
      * @param password
      */
     static async login(email: string, password: string) {
-        const user = await this.getUser({email: email})
+        let user;
+        try{
+            user = await this.getUser({email: email})
+
+        }
+        catch (e){
+            throw new BaseError({error: e, errno: 4, status: 401})
+        }
         if (user == null) {
             throw new BaseError({error: "User not found", errno: 4, status: 401})
         }
+
         await verifyPassword(user.hash, password);
+
         return user.toJSON();
     }
 
@@ -39,6 +47,11 @@ export default class AuthService {
 
     }
 
+    static async isTokenValid(token: string){
+        const session_token = (await query('SELECT * FROM users WHERE session_token = ?', [token]))[0];
+        return session_token  == null ? false: true;
+    }
+
     /**
      * Gets the user by using either the name or the id provided, if both are provided it will use the id.
      * If the user is not found it will return null
@@ -47,17 +60,13 @@ export default class AuthService {
      */
     static async getUser(fields: { id?: number, email?: string }) {
         if (fields.id != null) {
-            const user = (await query('SELECT *  FROM users WHERE id = ?', [fields.id]))[0]
-            if (user == null) {
-                return null
-            }
-            return UserModel.fromJSON(user)
+           const user =  (await query('SELECT * FROM users WHERE id = ?', [fields.id]))[0]
+            return user == null ? null : UserModel.fromJSON(user)
         } else if (fields.email != null) {
-            const user = (await query('SELECT *  FROM users WHERE email = ?', [fields.email]))[0]
-            if (user == null) {
-                return null
-            }
-            return UserModel.fromJSON(user);
+
+           const user =  (await query('SELECT * FROM users WHERE email = ?', [fields.email]))[0]
+
+            return user == null ? null : UserModel.fromJSON(user)
         } else {
             throw new BaseError({error: 'No method of searching user used', errno: 0, status: 500})
         }
