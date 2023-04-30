@@ -21,10 +21,17 @@ const routes = [
   },
   
   {
+    path: '/preview/product/:id',
+    component: () => import('@/views/ProductView.vue'),
+  },
+  
+  {
     
     path: '/product/:action/:id?',
     component: () => import('@/views/ProductForm.vue'),
   },
+
+
 
 ]
 

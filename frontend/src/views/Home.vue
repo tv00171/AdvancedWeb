@@ -12,7 +12,7 @@
             md="4"
             lg="3"
           >
-            <Card :item="item" />
+            <Card :item="item" @click="() => viewProduct(item)" />
           </v-col>
         </v-row>
         <h1 v-else>No Items found</h1>
@@ -25,6 +25,7 @@
 import Header from "../components/Header.vue";
 import Card from "../components/Card.vue";
 import axios from "axios";
+import router from "@/router";
 
 export default {
   name: "HomePage",
@@ -49,6 +50,10 @@ export default {
     this.fetchPosts();
   },
   methods: {
+    viewProduct(product) {
+      console.log(product.id);
+      router.push(`/preview/product/${product.id}`);
+    },
     fetchPosts: async function () {
       let response = await axios.get("/posts");
 
