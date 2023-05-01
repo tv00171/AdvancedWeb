@@ -1,7 +1,7 @@
 <template>
   <Header />
   <v-container>
-    <h1>User ID: 1 Products</h1>
+    <h1>My Products</h1>
     <v-card
       v-for="(product, index) in products"
       :key="index"
@@ -41,9 +41,7 @@ export default {
       this.$router.push("/product/create");
     },
     fetchProducts: async function () {
-      let response = await axios.post("/products/get", {
-        user_id: 1,
-      });
+      let response = await axios.get("http://localhost:5555/products/get" );
 
       this.products = await response.data.data;
     },
@@ -51,8 +49,7 @@ export default {
       this.$router.push("/product/edit/" + id);
     },
     deleteProduct: async function (id) {
-      await axios.post("/products/delete", {
-        user_id: 1,
+      await axios.post("http://localhost:5555/products/delete", {
         product_id: id,
       });
 

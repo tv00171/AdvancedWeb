@@ -20,12 +20,13 @@ export default {
         this.isLoading = true;
 
         // Make the api call to login
-        const loginResponse = await axios.post('/login', {
+        const loginResponse = await axios.post('http://localhost:4444/login', {
           email:  this.$refs.form.email.value,
           password: this.$refs.form.password.value
         });
 
-        localStorage.setItem('user', JSON.stringify(loginResponse))
+        console.log(loginResponse)
+        localStorage.setItem('user', JSON.stringify(loginResponse.data.payload))
         // Push the application to the home page
         await router.push('/home/');
       } catch (e) {

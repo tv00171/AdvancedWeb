@@ -1,18 +1,20 @@
 import {NextFunction, Request, Response} from "express";
+import axios from "axios";
 
 async function authMiddleware(req: Request, res: Response, next: NextFunction) {
-    // let token = req.headers.authorization
+    let token = req.headers.authorization;
     // // Check the token is not null
     // if (token == null) {
     //     return res.status(400).json({success: false, error: 'No token'})
     // }
 
-    // Check if the token is valid
-    let user = {
-        id: 1,
-        name: "Paco",
-        email: "paco@gmail.com",
+    try{
+        var userInfo = await axios.get(`http://127.0.0.1:4444/userInfo`, {params:{token: token}})
+    } catch (e) {
+        return res.status(401).json({message: "Token not valid"})
     }
+    // Check if the token is valid
+    let user = userInfo.data.payload
     res.locals.user = user;
     next();
 }

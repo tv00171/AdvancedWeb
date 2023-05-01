@@ -41,15 +41,13 @@ export default {
     submitForm: async function () {
       const { action } = this.$route.params;
       if (action === "edit") {
-        await axios.post("/products/edit", {
-          user_id: 1,
+        await axios.post("http://localhost:5555/products/edit", {
           ...this.productForm,
           product_id: this.productForm.id,
           name: this.productForm.name,
         });
       } else if (action === "create") {
-        await axios.post("/products/create", {
-          user_id: 1,
+        await axios.post("http://localhost:5555/products/create", {
           ...this.productForm,
         });
       }
@@ -57,28 +55,16 @@ export default {
       this.$router.push("/products");
     },
     fetchProducts: async function () {
-      let { action, id } = this.$route.params;
+      let {id } = this.$route.params;
 
-      let response = await axios.post("/products/get", {
-        user_id: 1,
+      let response = await axios.get("http://localhost:5555/products/getPost", {
+        params:{
+          post_id: id
+        }
       });
 
       const responseData = await response.data.data;
-      this.products = responseData;
-
-      let productFound = false;
-
-      if (action === "edit" && id !== "") {
-        responseData.map((product) => {
-          if (parseInt(product.id) === parseInt(id)) {
-            this.productForm = product;
-            productFound = true;
-          }
-        });
-        if (!productFound) {
-          this.$router.push("/products");
-        }
-      }
+      this.productForm = responseData;
     },
     generatePageName() {
       const { action } = this.$route.params;

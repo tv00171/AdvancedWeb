@@ -30,6 +30,7 @@ class BaseError {
         3: "Invalid parameters",
         4: "Resource not found",
         5: "Passwords do not match",
+        6: "Invalid token",
         other: 'Unknown error'
     }
 

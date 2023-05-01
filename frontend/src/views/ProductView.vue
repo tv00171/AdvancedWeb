@@ -45,11 +45,10 @@ export default {
     return {
       products: [],
       product: {
-        description: "sadsad",
+        description: "No data",
         id: 7,
-        name: "asda",
-        price: "22.00",
-        user_id: 1,
+        name: "No data",
+        price: "No data",
       },
     };
   },
@@ -58,27 +57,17 @@ export default {
   },
   methods: {
     fetchProducts: async function () {
-      let { id } = this.$route.params;
+      let { post_id } = this.$route.params;
 
-      let response = await axios.post("/products/get", {
-        user_id: 1,
-      });
-
-      const responseData = await response.data.data;
-      this.products = responseData;
-
-      let productFound = false;
-
-      responseData.map((product) => {
-        if (parseInt(product.id) === parseInt(id)) {
-          this.product = product;
-          productFound = true;
+      let response = await axios.get("http://localhost:5555/products/getPost", {
+        params: {
+          post_id: post_id
         }
       });
 
-      if (!productFound) {
-        this.$router.push("/products");
-      }
+      const responseData = await response.data.data;
+      console.log(responseData)
+      this.product = responseData;
     },
   },
 };

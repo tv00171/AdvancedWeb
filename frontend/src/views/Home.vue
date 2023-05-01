@@ -51,17 +51,13 @@ export default {
   },
   methods: {
     viewProduct(product) {
-      console.log(product.id);
       router.push(`/preview/product/${product.id}`);
     },
     fetchPosts: async function () {
-      let response = await axios.get("/posts");
+      let response = await axios.get("http://localhost:5555/posts");
 
-      console.log(response.data);
       this.items = response.data.data;
     },
   },
 };
 </script>
-
-

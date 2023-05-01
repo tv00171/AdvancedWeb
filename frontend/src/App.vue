@@ -6,5 +6,16 @@
 
 <script setup>
 import axios from "axios";
-axios.defaults.baseURL = "http://localhost:5555";
+
+axios.interceptors.request.use(function (config) {
+  if(localStorage.getItem('user') != null){
+    const user = JSON.parse(localStorage.getItem('user'))
+    const token  = user.session.session_token
+    console.log(token)
+    config.headers.authorization =  token;
+  }
+
+  return config;
+});
+
 </script>
