@@ -5,7 +5,7 @@ export let connection: mysql.Connection;
 /**
  * Makes a query using the mysql2 library and then processes the data to only return the result
  */
-export async function query(str: String, arr?: any) {
+export default async function query(str: String, arr?: any) {
     try {
         await init();
         let val;
@@ -27,7 +27,7 @@ export async function query(str: String, arr?: any) {
 }
 
 // Initiate the db connection
-export const init = async () => {
+const init = async () => {
     connection = await mysql.createConnection({
         host: process.env.MY_SQL_DB_HOST,
         user: process.env.MY_SQL_DB_USER,
@@ -36,11 +36,3 @@ export const init = async () => {
         database: process.env.MY_SQL_DB_DATABASE,
     })
 };
-
-export const pool = mysql.createPool({
-        host: process.env.MY_SQL_DB_HOST,
-        user: "root",
-        password: "AWTPassword",
-        port: 6604,
-        database: "posts",
-});

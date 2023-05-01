@@ -1,5 +1,5 @@
 import {Router} from "express";
-import {query, pool} from "../helpers/db_connection";
+import query from "../helpers/db_connection";
 import { OkPacket, ResultSetHeader } from "mysql2";
 
 const routes = Router();
@@ -23,11 +23,9 @@ routes.get('/userPosts', async (req, res) => {
 })
 
 routes.get('/posts', async (req, res) => {
-    const query = 'SELECT * FROM posts';
-
     try {
-        const result = await pool.query(query, []);
-        res.json({ status: true, data: result[0] });
+        const result = await query("SELECT * FROM posts");
+        res.json({ status: true, data: result});
     } catch (error) {
         res.status(500).json({ message: 'SERVER ERROR', error });
     }
@@ -36,10 +34,10 @@ routes.get('/posts', async (req, res) => {
 // products
 routes.post('/products/create', async (req, res) => {
     const { name, user_id, description, price } = req.body;
-    const query = 'INSERT INTO posts (name, user_id, description, price) VALUES (?, ?, ?, ?)';
+    const queryString: string = 'INSERT INTO posts (name, user_id, description, price) VALUES (?, ?, ?, ?)';
 
     try {
-        const result = await pool.query(query, [name, user_id, description, price]);
+        const result = await query(queryString, [name, user_id, description, price]);
         console.log(result);
         res.status(201).json({ status: true});
     } catch (error) {
@@ -48,25 +46,25 @@ routes.post('/products/create', async (req, res) => {
 });
 
 routes.post('/products/get', async (req, res) => {
-    const { user_id } = req.body; 
+    const { user_id } = req.body;
 
-    const query = 'SELECT * FROM posts WHERE user_id = ?';
+    const queryString = 'SELECT * FROM posts WHERE user_id = ?';
 
     try {
-        const result = await pool.query(query, [user_id]);
-        res.json({ status: true, data: result[0] });
+        const result = await query(queryString, [user_id]);
+        res.json({ status: true, data: result });
     } catch (error) {
         res.status(500).json({ message: 'SERVER ERROR', error });
     }
 })
 
 routes.post('/products/delete', async (req, res) => {
-    const { user_id, product_id } = req.body; 
+    const { user_id, product_id } = req.body;
 
-    const query = 'DELETE FROM posts WHERE id = ? AND user_id = ?';
+    const queryString = 'DELETE FROM posts WHERE id = ? AND user_id = ?';
 
     try {
-        const result: unknown = await pool.query(query, [product_id, user_id]);
+        const result: unknown = await query(queryString, [product_id, user_id]);
 
         if ((result as OkPacket).affectedRows === 0) {
             res.status(200).json({ message: `Product with ID ${product_id} not found` });
@@ -79,12 +77,12 @@ routes.post('/products/delete', async (req, res) => {
 })
 
 routes.post('/products/edit', async (req, res) => {
-    const { user_id, product_id, name, description, price} = req.body; 
+    const { user_id, product_id, name, description, price} = req.body;
 
-    const query = 'UPDATE posts SET name = ?, price = ?, description = ? WHERE id = ? AND user_id = ?';
+    const queryString = 'UPDATE posts SET name = ?, price = ?, description = ? WHERE id = ? AND user_id = ?';
 
     try {
-        const result: unknown = await pool.query(query, [name, price, description, product_id, user_id]);
+        const result: unknown = await query(queryString, [name, price, description, product_id, user_id]);
 
         if ((result as OkPacket).affectedRows === 0) {
             res.status(200).json({ message: `Product with ID ${product_id} not found` });
