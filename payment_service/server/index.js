@@ -38,8 +38,8 @@ app.post("/api/create-checkout-session", async (req, res) => {
         }, 
       ], 
       mode: "payment", 
-      success_url: "http://localhost:5173/success", 
-      cancel_url: "http://localhost:5173/cancel", 
+      success_url: "http://localhost:8080/success", 
+      cancel_url: "http://localhost:8080/cancel", 
     }); 
     res.json({ id: session.id }); 
   }); 
