@@ -1,16 +1,20 @@
 <template>
   <v-toolbar app dense color="white" dark elevation="2" height="90">
     <v-toolbar-title class="logo_size">
+      <router-link to="/home">
       <img src="@/assets/name_logo.svg" alt="Logo" height="98"/>
+      </router-link>
     </v-toolbar-title>
     <SearchBar class="searchbar"></SearchBar>
     <v-spacer></v-spacer>
     <v-btn icon class="icon-button">
       <v-icon size="26">mdi-message</v-icon>
     </v-btn>
-    <v-btn icon class="icon-button">
-      <v-icon size="26">mdi-pencil</v-icon>
-    </v-btn>
+    <router-link to="/products">
+      <v-btn icon class="icon-button">
+        <v-icon size="26">mdi-pencil</v-icon>
+      </v-btn>
+    </router-link>
     <v-btn icon class="icon-button">
       <v-icon size="26">mdi-account</v-icon>
     </v-btn>

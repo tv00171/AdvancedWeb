@@ -22,16 +22,39 @@ services:
       MY_SQL_DB_PASSWORD: AWTPassword
       MY_SQL_DB_DATABASE: auth
       MY_SQL_DB_PORT: 3306
-
     links:
       - auth_db
 
-  db-ross:
+  post_db:
     image: mysql/mysql-server
     ports:
-      - "6604:3306"
+      - "3307:3307"
     volumes:
       - ./posting_service/db:/var/lib/mysql
     container_name: post_db
     environment:
       MYSQL_ROOT_PASSWORD: AWTPassword
+      MYSQL_TCP_PORT: 3307
+
+  post_service:
+    build: ./posting_service
+    ports:
+      - "5555:5555"
+    container_name: post_service
+    environment:
+      MY_SQL_DB_HOST: post_db
+      MY_SQL_DB_USER: root
+      MY_SQL_DB_PASSWORD: AWTPassword
+      MY_SQL_DB_DATABASE: posts
+      MY_SQL_DB_PORT: 3307
+    links:
+      - post_db
+
+  frontend:
+    build: ./frontend
+    container_name: frontend
+    ports:
+      - "8080:80"
+    links:
+      - post_service
+      - auth_service

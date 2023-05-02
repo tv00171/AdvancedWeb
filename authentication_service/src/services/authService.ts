@@ -47,9 +47,13 @@ export default class AuthService {
 
     }
 
-    static async isTokenValid(token: string){
-        const session_token = (await query('SELECT * FROM users WHERE session_token = ?', [token]))[0];
-        return session_token  == null ? false: true;
+    static async getUserByToken(token: string){
+        console.log(token)
+        const user = (await query('SELECT * FROM users WHERE session_token = ?', [token]))[0];
+        if(user == null){
+            throw new BaseError({error: "Token not valid", errno:6 })
+        }
+        return user;
     }
 
     /**

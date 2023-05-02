@@ -20,7 +20,7 @@ export default {
         this.isLoading = true;
 
         // Make the api call to login
-        const loginResponse = await axios.post('/register', {
+        const loginResponse = await axios.post('http://localhost:4444/register', {
           email:  this.$refs.form.email.value,
           password: this.$refs.form.password.value,
           name: this.$refs.form.name.value
