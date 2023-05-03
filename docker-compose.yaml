@@ -51,7 +51,7 @@ services:
       - post_db
     
   payment_service:
-    build: ./payment_service
+    build: ./payment_service/server
     ports:
       - "8000:8000"
     container_name: payment_service
