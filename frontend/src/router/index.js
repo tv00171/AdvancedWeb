@@ -31,6 +31,11 @@ const routes = [
     component: () => import('@/views/ProductForm.vue'),
   },
 
+  {
+    path: '/messaging/:id?',
+    component: () => import('@/views/Messaging.vue'),
+  }
+
 
 
 ]
