@@ -1,0 +1,77 @@
+version: "3.9"
+services:
+  auth_db:
+    image: mysql/mysql-server
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./authentication_service/db:/var/lib/mysql
+    container_name: auth_db
+    environment:
+      MYSQL_ROOT_PASSWORD: AWTPassword
+      MYSQL_TCP_PORT: 3306
+
+  auth_service:
+    build: ./authentication_service
+    ports:
+      - "4444:4444"
+    container_name: auth_service
+    environment:
+      MY_SQL_DB_HOST: auth_db
+      MY_SQL_DB_USER: root
+      MY_SQL_DB_PASSWORD: AWTPassword
+      MY_SQL_DB_DATABASE: auth
+      MY_SQL_DB_PORT: 3306
+    links:
+      - auth_db
+
+  post_db:
+    image: mysql/mysql-server
+    ports:
+      - "3307:3307"
+    volumes:
+      - ./posting_service/db:/var/lib/mysql
+    container_name: post_db
+    environment:
+      MYSQL_ROOT_PASSWORD: AWTPassword
+      MYSQL_TCP_PORT: 3307
+
+  post_service:
+    build: ./posting_service
+    ports:
+      - "5555:5555"
+    container_name: post_service
+    environment:
+      MY_SQL_DB_HOST: post_db
+      MY_SQL_DB_USER: root
+      MY_SQL_DB_PASSWORD: AWTPassword
+      MY_SQL_DB_DATABASE: posts
+      MY_SQL_DB_PORT: 3307
+    links:
+      - post_db
+    
+  payment_service:
+    build: ./payment_service/server
+    ports:
+      - "8000:8000"
+    container_name: payment_service
+
+  frontend:
+    build: ./frontend
+    container_name: frontend
+    ports:
+      - "8080:80"
+    links:
+      - post_service
+      - auth_service
+      - chat_service
+      - payment_service
+
+  chat_service:
+    build:
+      context: ./messaging_service
+      dockerfile: Dockerfile
+    container_name: chat_service
+    restart: always
+    ports:
+      - "3000:3000"
