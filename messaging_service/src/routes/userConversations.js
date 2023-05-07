@@ -3,24 +3,21 @@ const router = express.Router()
 const UserConversation = require('../models/userConversations')
 const Conversation = require('../models/inbox')
 
+
+// Getting all conversations
+// router.get('/', async (req, res) =>{
+//     try {
+//         const conversations = await UserConversation.find();
+//         res.json(conversations)
+//     } catch (err){
+//         res.status(500).json({error: err.message })
+//     }
+// })
+
 // Getting one conversation
-router.get('/', async (req, res) =>{
-    try {
-        console.log("Locals")
-
-        console.log(res.locals.user.id)
-        var conversationObj = await UserConversation.findById(res.locals.user.id)
-        console.log(conversationObj)
-        if (conversationObj == null){
-            return res.status(404).json({ message: 'Cannot find conversation'})
-        }
-    } catch (err) {
-        return res.status(500).json({ error: err.message})
-    }
-
-    conversationObj  =conversationObj.conversations;
+router.get('/:id', getConversationIDs, async (req, res) =>{
     try{
-        const listOfIds =conversationObj;
+        const listOfIds = res.conversation;
         const conversations = await getConversations(listOfIds);
         console.log(conversations);
 
@@ -28,7 +25,7 @@ router.get('/', async (req, res) =>{
             return{
               _id: conversation._id,
               itemName: conversation.itemName,
-              itemSrc: conversation.itemSrc
+              itemSrc: conversation.itemSrc  
             };
         });
 
@@ -38,12 +35,12 @@ router.get('/', async (req, res) =>{
         console.error(error);
         res.status(500).json({error:'Internal Error'})
     }
-
+    
 });
 
-/*
+
 // Creating a conversation ( via Contact seller from Listing microservice)
-router.post('/', async (req, res) => {
+router.post('/createConversation', async (req, res) => {
     const conversation = new Conversation({
         conversationID : req.body.conversationID,
         itemName : req.body.itemName,
@@ -56,12 +53,12 @@ router.post('/', async (req, res) => {
     }catch(err){
         res.status(400).json({error: err.message})
     }
-})  */
+})  
 
 /*
 // Update conversation (add messages)
 router.patch('/', (req, res) => {
-
+    
 })*/
 async function getConversations(listOfIds){
     const data = await Conversation.find({_id: {$in:listOfIds}});
@@ -70,9 +67,7 @@ async function getConversations(listOfIds){
 
 async function getConversationIDs(req,res, next) {
     let conversationObj;
-    let conversationHeaderObj;
-    let listOfConversationHeaderProps = [];
-
+    
     try {
         conversationObj = await UserConversation.findById(req.params.id)
         if (conversationObj == null){
