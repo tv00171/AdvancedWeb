@@ -64,4 +64,13 @@ services:
     links:
       - post_service
       - auth_service
-      - payment_service
+      - chat_service
+
+  chat_service:
+    build:
+      context: ./messaging_service
+      dockerfile: Dockerfile
+    container_name: chat_service
+    restart: always
+    ports:
+      - "3000:3000"

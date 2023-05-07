@@ -39,6 +39,11 @@ const routes = [
     name: 'success', component: SuccessView 
   },
 
+  {
+    path: '/messaging/:id?',
+    component: () => import('@/views/Messaging.vue'),
+  },
+
   { 
     path: '/cancel', 
     name: 'cancel', component: CancelView 
