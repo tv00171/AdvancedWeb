@@ -2,7 +2,7 @@ const express = require('express')
 const router = express.Router()
 const UserConversation = require('../models/userConversations')
 const Conversation = require('../models/inbox')
-
+const mongoose = require('mongoose')
 
 // Getting all conversations
 // router.get('/', async (req, res) =>{
@@ -29,7 +29,6 @@ router.get('/:id', getConversationIDs, async (req, res) =>{
             };
         });
 
-
         res.json({ "conversations": conversationProps });
     } catch (error){
         console.error(error);
@@ -38,23 +37,49 @@ router.get('/:id', getConversationIDs, async (req, res) =>{
     
 });
 
-
 // Creating a conversation ( via Contact seller from Listing microservice)
 router.post('/createConversation', async (req, res) => {
-    const conversation = new Conversation({
-        conversationID : req.body.conversationID,
-        itemName : req.body.itemName,
-        itemSrc : req.body.itemSrc,
-        messages: []
-    })
-    try{
-        const newConversation = await conversation.save();
-        res.status(201).json(newConversation);
-    }catch(err){
-        res.status(400).json({error: err.message})
-    }
-})  
+    const itemID = req.body.itemID;
+    const newConversationID = new mongoose.Types.ObjectId();
+    const userID = res.locals.user.id;
+    const newConversationItemObj = { conversationID: newConversationID, itemID: itemID };
 
+    try {
+        const existingConversation = await Conversation.exists({ itemID });
+
+        if (existingConversation) {
+            return res.status(409).json({ error: 'Conversation already exists item' });
+        } 
+        else {
+            const conversation = new Conversation({
+                _id: newConversationID,
+                itemID: itemID,
+                itemSrc: req.body.itemSrc,
+                messages: [],
+            });
+
+            const newConversation = await conversation.save();
+
+            const existingUserConversations = await UserConversation.exists({  userID });
+
+            if (existingUserConversations) {
+                return res.status(409).json({ message: 'Conversation already exists user' });
+            } else {
+                const userConversation = new UserConversation({
+                    _id: new mongoose.Types.ObjectId(),
+                    userID: userID,
+                    conversations: [newConversationItemObj]
+                });
+
+                const newUserConversation = await userConversation.save();
+            }
+
+            return res.status(200).json({ message: `Successfully created conversation for ${itemID}` });
+        }
+    } catch (err) {
+        return res.status(400).json({ error: err.message });
+    }
+});
 /*
 // Update conversation (add messages)
 router.patch('/', (req, res) => {

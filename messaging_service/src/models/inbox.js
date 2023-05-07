@@ -20,8 +20,8 @@ const inboxSchema = new mongoose.Schema({
         type: Number,
         required: true
     },
-    itemName : {
-        type: String,
+    itemID : {
+        type: Number,
         required: true
     },
     itemSrc : {
