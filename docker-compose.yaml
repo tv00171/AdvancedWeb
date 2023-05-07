@@ -61,7 +61,7 @@ services:
 
   chat_service:
     build:
-      context: .
+      context: ./messaging_service
       dockerfile: Dockerfile
     container_name: chat_service
     restart: always
