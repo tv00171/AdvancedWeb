@@ -2,9 +2,13 @@
 require('dotenv').config()
 
 //imports
-const mongoose = require('mongoose')
-const express = require('express')
-const cors = require('cors')
+const mongoose = require('mongoose');
+const express = require('express');
+const cors = require('cors');
+const http = require('http');
+const socketIO = require('socket.io');
+
+// create express backend 
 const app = express();
 
 //connect to our database
@@ -14,6 +18,24 @@ const db = mongoose.connection;
 db.on('error', (error) => console.error(error));
 db.once('open', () => console.error("Connected to MongoDB"));
 
+// adding sockets
+const httpServer = http.createServer(app);
+const io = socketIO(server);
+io.on('connection', (socket) =>{
+  console.log('user has connected');
+
+  // handle event for chatting
+  socket.on('chat_interaction', (message) =>{
+    console.log("Recieved message: ",message);
+    // broadcast message to people in chatapp
+    io.emit('chat_interaction',message);
+  });
+
+  // handle disconnect
+  socket.on('disconnect', () =>{
+    console.log('User disconnected');
+  });
+});
 
 //adding middleware cors
 
