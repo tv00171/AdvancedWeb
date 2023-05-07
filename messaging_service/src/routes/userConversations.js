@@ -80,6 +80,41 @@ router.post('/createConversation', async (req, res) => {
         return res.status(400).json({ error: err.message });
     }
 });
+
+
+//API call to post message   
+router.post('/sendMessage', async (req, res) => {
+    const currentMessage = req.body.message;
+    const messageObject = {
+        userID: res.locals.user.id,
+        message: currentMessage,
+        timestamp: Date.now()
+    };
+    
+    try {
+        // Retrieve the conversation ID from the request body or wherever it's available
+        const conversationID = req.body.conversationID;
+
+        // Find the conversation by its ID
+        const conversation = await Conversation.findByIdAndUpdate(conversationID, {$push:{messages: messageObject}}, {new: true});
+
+        if (!conversation) {
+            return res.status(404).json({ error: 'Conversation not found' });
+        }
+
+        // Append the messageObject to the messages array
+        //conversation.messages.push(messageObject);
+
+        // Save the updated conversation
+        //const updatedConversation = await conversation.save();
+
+        res.status(200).json(updatedConversation);
+    } catch (err) {
+        res.status(400).json({ error: err.message });
+    }
+});
+
+
 /*
 // Update conversation (add messages)
 router.patch('/', (req, res) => {

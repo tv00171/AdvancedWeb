@@ -6,8 +6,8 @@
         </div>
       </div>
       <div id="chat-input">
-        <input type="text" placeholder="Send a message...">
-        <font-awesome-icon :icon="['fas', 'paper-plane']" />
+        <input type="text" placeholder="Send a message..." v-model="inputMessage">
+        <font-awesome-icon id="sendButton" :icon="['fas', 'paper-plane']" @click="sendMessage" />
       </div>
     </div>
   </template>
@@ -19,7 +19,8 @@
     name: 'ChatContainer',
     data() {
       return {
-        messages: []
+        messages: [],
+        inputMessage: ''
       }
     },
     props: {
@@ -28,6 +29,9 @@
     watch: {
       conversationID: function (){
         this.getMessages();
+      },
+      inputMessage: function (){
+        console.log(this.inputMessage);
       }
     },
     methods : {
@@ -41,7 +45,35 @@
         .catch(error => {
           console.log(error);
         });
-      }
+      },
+    async sendMessage() {
+    const currentMessage = this.inputMessage;
+    const currentConversationId = this.conversationID;
+    const requestBody = {
+      message: currentMessage,
+      conversationID: currentConversationId
+    };
+
+    try {
+      const APICall = 'http://localhost:3000/userConversations/sendMessage';
+      const response = await axios.post(APICall, requestBody);
+      // Handle the response as needed
+      console.log(response);
+
+      // Clear the input field after sending the message
+      this.inputMessage = '';
+      
+      //refresh chat
+      const currentConversation = this.conversationID;
+      const refreshChat = 'http://localhost:3000/inbox/' + currentConversation;
+      // Make the API call to retrieve the messages
+      const response2 = axios.get(refreshChat)
+      this.messages = response2.data.messages;
+      console.log(response2.data.messages)
+    } catch (error) {
+      console.error(error);
+    }
+  },
     },
     mounted() {
       const currentConversation = this.conversationID;
