@@ -49,6 +49,12 @@ services:
       MY_SQL_DB_PORT: 3307
     links:
       - post_db
+    
+  payment_service:
+    build: ./payment_service/server
+    ports:
+      - "8000:8000"
+    container_name: payment_service
 
   frontend:
     build: ./frontend
@@ -58,6 +64,8 @@ services:
     links:
       - post_service
       - auth_service
+      - chat_service
+      - payment_service
 
   chat_service:
     build:

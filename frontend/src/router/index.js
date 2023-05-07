@@ -1,5 +1,7 @@
 // Composables
 import {createRouter, createWebHistory} from 'vue-router'
+import CancelView from '../views/CancelView.vue'
+import SuccessView from '../views/SuccessView.vue'
 
 const routes = [
   {
@@ -12,6 +14,7 @@ const routes = [
   },
   {
     path: '/home',
+    name: 'home',
     component: () => import('@/views/Home.vue'),
   },
 
@@ -32,9 +35,20 @@ const routes = [
   },
 
   {
-    path: '/messaging',
+    path: '/success',
+    name: 'success', component: SuccessView
+  },
+
+  {
+    path: '/messaging/:id?',
     component: () => import('@/views/Messaging.vue'),
-  }
+  },
+
+  {
+    path: '/cancel',
+    name: 'cancel', component: CancelView
+  },
+
 ]
 
 const router = createRouter({
