@@ -34,9 +34,9 @@ const routes = [
     component: () => import('@/views/ProductForm.vue'),
   },
 
-  { 
-    path: '/success', 
-    name: 'success', component: SuccessView 
+  {
+    path: '/success',
+    name: 'success', component: SuccessView
   },
 
   {
@@ -44,9 +44,9 @@ const routes = [
     component: () => import('@/views/Messaging.vue'),
   },
 
-  { 
-    path: '/cancel', 
-    name: 'cancel', component: CancelView 
+  {
+    path: '/cancel',
+    name: 'cancel', component: CancelView
   },
 
 ]

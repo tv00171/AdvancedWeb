@@ -5,6 +5,8 @@ const Conversation = require('../models/inbox')
 // Getting all conversations
 router.get('/', async (req, res) =>{
     try {
+        console.log("Locals")
+
         const conversations = await Conversation.find();
         res.json(conversations)
     } catch (err){
@@ -12,7 +14,7 @@ router.get('/', async (req, res) =>{
     }
 })
 
-//api call for retriving conversation with id 
+//api call for retriving conversation with id
 router.get('/conversations/:id', (req, res) => {
     var conversationId = req.params.id;
     Conversations.findOne({ conversationID: conversationId }, 'messages', (err, conversation) => {
@@ -45,12 +47,12 @@ router.post('/', async (req, res) => {
     }catch(err){
         res.status(400).json({error: err.message})
     }
-})  
+})
 
 
 // Update conversation (add messages)
 router.patch('/', (req, res) => {
-    
+
 })
 
 async function getConversation(req,res, next) {

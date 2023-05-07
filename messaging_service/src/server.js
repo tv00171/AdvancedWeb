@@ -16,18 +16,20 @@ db.once('open', () => console.error("Connected to MongoDB"));
 
 
 //adding middleware cors
+
+const userConversationRouter = require('./routes/userConversations')
+const authMiddleware = require("./middleware/authMiddleware");
+
 app.use(cors({
     origin: 'http://localhost:8080'
   }));
-  
+
 // makes our app accept json
 app.use(express.json())
-
+app.use(authMiddleware)
 // importing route so we can redirect api calls
 const inboxRouter = require('./routes/inbox')
 app.use('/inbox', inboxRouter)
-
-const userConversationRouter = require('./routes/userConversations')
 app.use('/userConversations',userConversationRouter)
 
 // this port is listening for any request from the front-end

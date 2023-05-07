@@ -1,6 +1,6 @@
 <script>
 import axios from 'axios';
-import ConversationHeader from './ConversationHeader.vue';
+import ConversationHeader from '../components/ChatConversationHeader.vue';
 export default{
     name: 'InboxContainer',
     components:{
@@ -13,8 +13,8 @@ export default{
         }
     },
     props:{
-        getConversationID: Function
-    },    
+        getConversationID: null
+    },
     watch: {
       conversationID: function (){
         this.getMessages();
@@ -25,7 +25,8 @@ export default{
     mounted(){
         console.log("inbox has been mounted")
         // This will be based on the userID that we get from Toni's microservice
-        axios.get('http://localhost:3000/userConversations/64481c51b2c38c08980e063c').then(response => {
+        axios.get(`http://localhost:3000/userConversations/`).then(response => {
+          console.log("Response succesful")
             this.conversationData = response.data.conversations;
             console.log(this.conversationData);
         }).catch(error =>{
