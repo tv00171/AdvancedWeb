@@ -1,12 +1,12 @@
 FROM node:16-alpine
 
-WORKDIR /usr/src/app
+WORKDIR /payment-microservice
 
-COPY package*.json ./
+COPY server/package*.json ./
 
 RUN npm install
 
 COPY . .
 
 EXPOSE 8000
-CMD [ "npm", "run", "start" ]
+CMD [ "npm", "start" ]

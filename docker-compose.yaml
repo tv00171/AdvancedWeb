@@ -65,6 +65,7 @@ services:
       - post_service
       - auth_service
       - chat_service
+      - payment_service
 
   chat_service:
     build:
