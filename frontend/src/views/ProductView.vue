@@ -51,14 +51,14 @@ export default {
         description: "No data",
         id: 7,
         name: "No data",
-        price: "No data",
+        price: 500,
       },
     };
   },
 
 
-  mounted() {
-    this.fetchProducts();
+  async mounted() {
+    await this.fetchProducts();
   },
   methods: {
     makePayment() {
@@ -69,26 +69,31 @@ export default {
         quantity: 1,
         productOwner: "Kevin Hart",
       }
-
       const makePayment = async () => {
+
         const stripe = await loadStripe(
           "pk_test_51Mw6PuBqA4vdmyT3DGXZ9eBdIRFTPLXPOqR1LfklpaNGOx3FDTEiyR2dF8z3y4KrLYbDRQNtiq9voa4SchcKgCGZ00l0bZae5Q"
         );
-
         const headers = {
           "Content-Type": "application/json",
         };
 
-        const response = await fetch(
-          "http://localhost:8000/api/create-checkout-session",
-          {
-            method: "POST",
-            headers: headers,
-            body: JSON.stringify(product),
-          }
-        );
+        let response;
+        try{
+           response = await axios.post(
+            "http://localhost:8000/api/create-checkout-session",
+            {
+              product,
+            },
+            {headers: headers}
+          );
 
-        const session = await response.json();
+        }catch (e) {
+          console.log(e)
+        }
+        const session = await response.data;
+
+        console.log("Getting here")
 
         const result = await stripe.redirectToCheckout({
           sessionId: session.id,
@@ -99,6 +104,7 @@ export default {
         }
       };
 
+      makePayment();
       return {
         product,
         makePayment,

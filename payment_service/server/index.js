@@ -24,6 +24,7 @@ app.listen(8000, () => {
 app.post("/api/create-checkout-session", async (req, res) => {
     const { product } = req.body;
 
+
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ["card"],
       line_items: [
@@ -42,5 +43,7 @@ app.post("/api/create-checkout-session", async (req, res) => {
       success_url: "http://localhost:8080/success",
       cancel_url: "http://localhost:8080/cancel",
     });
+  console.log("hello there")
+
     res.json({ id: session.id });
   });
