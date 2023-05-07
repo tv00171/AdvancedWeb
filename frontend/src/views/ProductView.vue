@@ -55,57 +55,56 @@ export default {
       },
     };
   },
-  
-  setup() {
-    const product = ref({
-      name: "144Hz Philips Monitor",
-      price: 150,
-      productOwner: "Kevin Hart",
-      description:
-        "This is a 144Hz Monitor used only for 2 months. Still new, no scratches.",
-      quantity: 1,
-    });
 
-    const makePayment = async () => {
-      const stripe = await loadStripe(
-        "pk_test_51Mw6PuBqA4vdmyT3DGXZ9eBdIRFTPLXPOqR1LfklpaNGOx3FDTEiyR2dF8z3y4KrLYbDRQNtiq9voa4SchcKgCGZ00l0bZae5Q"
-      );
-
-      const body = { product: product.value };
-      const headers = {
-        "Content-Type": "application/json",
-      };
-
-      const response = await fetch(
-        "http://localhost:8000/api/create-checkout-session",
-        {
-          method: "POST",
-          headers: headers,
-          body: JSON.stringify(body),
-        }
-      );
-
-      const session = await response.json();
-
-      const result = await stripe.redirectToCheckout({
-        sessionId: session.id,
-      });
-
-      if (result.error) {
-        console.log(result.error);
-      }
-    };
-
-    return {
-      product,
-      makePayment,
-    };
-  },
 
   mounted() {
     this.fetchProducts();
   },
   methods: {
+    makePayment() {
+      let product = {
+        name: this.product.name,
+        price: this.product.price,
+        description: this.product.description,
+        quantity: 1,
+        productOwner: "Kevin Hart",
+      }
+
+      const makePayment = async () => {
+        const stripe = await loadStripe(
+          "pk_test_51Mw6PuBqA4vdmyT3DGXZ9eBdIRFTPLXPOqR1LfklpaNGOx3FDTEiyR2dF8z3y4KrLYbDRQNtiq9voa4SchcKgCGZ00l0bZae5Q"
+        );
+
+        const headers = {
+          "Content-Type": "application/json",
+        };
+
+        const response = await fetch(
+          "http://localhost:8000/api/create-checkout-session",
+          {
+            method: "POST",
+            headers: headers,
+            body: JSON.stringify(product),
+          }
+        );
+
+        const session = await response.json();
+
+        const result = await stripe.redirectToCheckout({
+          sessionId: session.id,
+        });
+
+        if (result.error) {
+          console.log(result.error);
+        }
+      };
+
+      return {
+        product,
+        makePayment,
+      };
+    },
+
     fetchProducts: async function () {
       let { post_id } = this.$route.params;
 
