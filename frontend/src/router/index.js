@@ -32,12 +32,9 @@ const routes = [
   },
 
   {
-    path: '/messaging/:id?',
+    path: '/messaging',
     component: () => import('@/views/Messaging.vue'),
   }
-
-
-
 ]
 
 const router = createRouter({

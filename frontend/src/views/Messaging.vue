@@ -11,9 +11,9 @@
 <script>
 /*import HeaderInbox from './components/HeaderInbox.vue'
 import HeaderChat from './components/HeaderChat.vue'*/
-import InboxContainer from './components/InboxContainer.vue';
-import ChatContainer from './components/ChatContainer.vue'
-import NavBar from './components/NavBar.vue'
+import InboxContainer from '../components/ChatInboxContainer.vue';
+import ChatContainer from '../components/ChatContainer.vue'
+import NavBar from '../components/ChatNavBar.vue'
 
 export default {
   name: 'App',
@@ -35,8 +35,12 @@ export default {
     getConversationID(id){
       this.currentConversationID = id;
       console.log("response from app.vue")
+      return this.currentConversationID;
     }
   },
+  created() {
+    this.getConversationID()
+  }
 };
 </script>
 
@@ -158,5 +162,3 @@ export default {
   padding: 10px 20px;
 }
 </style>
-
-
