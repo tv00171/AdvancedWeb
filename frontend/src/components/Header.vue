@@ -15,8 +15,8 @@
         <v-icon size="26">mdi-pencil</v-icon>
       </v-btn>
     </router-link>
-    <v-btn class="icon-button" icon>
-      <v-icon size="26">mdi-account</v-icon>
+    <v-btn class="icon-button" icon @click="logout">
+      <v-icon size="26">mdi-login-variant</v-icon>
     </v-btn>
   </v-toolbar>
 </template>
@@ -29,6 +29,10 @@ export default {
   methods: {
     router() {
       return router
+    },
+    logout() {
+      localStorage.clear();
+      router.push('/login');
     }
   },
   components: {

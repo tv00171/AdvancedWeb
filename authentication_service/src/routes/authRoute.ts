@@ -49,7 +49,7 @@ routes.get('/userInfo', async (req, res) => {
     try {
         const token = req.query.token;
         if (token == null) {
-            throw new BaseError({error: "Missing userId", errno: 3, status: 400})
+            throw new BaseError({error: "Missing token", errno: 3, status: 400})
         }
         const result = await AuthService.getUserByToken(token.toString());
         return res.json({success: true, payload: result});

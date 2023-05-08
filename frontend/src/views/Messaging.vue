@@ -34,28 +34,38 @@ export default {
     getConversationID(id) {
       this.currentConversationID = id;
       return this.currentConversationID;
+    },
+    async getPostsData() {
+      let nonEmptyArray = []
+      for (let i = 0; i < this.conversationData.length; i++) {
+        try {
+          let data = await axios.get("http://localhost:5555/products/getPost", {
+            params: {
+              post_id: this.conversationData[i].itemId
+            }
+          })
+          if (data.data.data.length != 0) {
+            this.conversationData[i].data = data.data.data;
+            nonEmptyArray.push(this.conversationData[i]);
+          }
+        } catch (e) {
+        }
+      }
+      this.conversationData = nonEmptyArray;
     }
-
   },
 
   async created() {
     // This will be based on the userID that we get from Toni's microservice
-    await axios.get(`http://localhost:3000/userConversations/`).then(response => {
-      console.log("Response succesful")
+    try {
+      const response = await axios.get(`http://localhost:3000/userConversations/`)
       this.conversationData = response.data.conversations;
       this.currentConversationID = this.conversationData[0]._id
-    }).catch(error => {
-      console.error(error)
-    });
 
-    for (let [i, v] of this.conversationData.entries()) {
-      let data = await axios.get("http://localhost:5555/products/getPost", {
-        params: {
-          post_id: v.itemId
-        }
-      })
-      this.conversationData[i].data = data.data.data;
+      await this.getPostsData()
+    } catch (e) {
     }
+    //
   }
 };
 </script>

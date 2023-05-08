@@ -12,7 +12,6 @@ async function authMiddleware(req: Request, res: Response, next: NextFunction) {
     try {
         var userInfo = await axios.get(`http://${process.env.AUTH_URL}:4444/userInfo`, {params: {token: token}})
     } catch (e) {
-        console.log(e);
         return res.status(401).json({message: "Token not valid"})
     }
     // Check if the token is valid

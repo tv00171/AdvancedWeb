@@ -1,9 +1,9 @@
 <template>
   <div id="chat-container">
     <div id="chat-content" style="overflow-y: scroll;">
-      <div v-for="(message, index) in messages" :key="index"
-           :class="{ 'sent-message': message.sender === 'me', 'received-message': message.sender !== 'me' }">
-        <p>{{ message.message }}</p>
+      <div v-for="(message, index) in messages" :key="index">
+        <p v-if="message.userID == loggedUserId" class="sent-message">{{ message.message }}</p>
+        <p v-else class="received-message"> {{ message.message }}</p>
       </div>
     </div>
     <v-divider color="black" thickness="3"></v-divider>
@@ -26,7 +26,8 @@ export default {
   data() {
     return {
       messages: [],
-      inputMessage: ''
+      inputMessage: '',
+      loggedUserId: null
     }
   },
   props: {
@@ -42,14 +43,13 @@ export default {
   methods: {
     async getMessages() {
       const currentConversation = this.conversationID;
-      const APICall = 'http://localhost:3000/inbox/' + currentConversation;
-      axios.get(APICall)
-        .then(response => {
-          this.messages = response.data.messages;
-        })
-        .catch(error => {
-          console.log(error);
-        });
+      try {
+        const APICall = 'http://localhost:3000/inbox/' + currentConversation;
+        const response = await axios.get(APICall)
+        this.messages = response.data.messages;
+      } catch (e) {
+
+      }
     },
     async sendMessage() {
       const currentMessage = this.inputMessage;
@@ -71,25 +71,26 @@ export default {
         const currentConversation = this.conversationID;
         const refreshChat = 'http://localhost:3000/inbox/' + currentConversation;
         // Make the API call to retrieve the messages
-        const response2 = axios.get(refreshChat)
+        const response2 = await axios.get(refreshChat)
         this.messages = response2.data.messages;
       } catch (error) {
-        console.error(error);
       }
       await this.getMessages();
     },
   },
-  mounted() {
+  async mounted() {
+    this.loggedUserId = JSON.parse(localStorage.getItem('user')).id
     const currentConversation = this.conversationID;
-    const APICall = 'http://localhost:3000/inbox/' + currentConversation;
     // Make the API call to retrieve the messages
-    axios.get(APICall)
-      .then(response => {
+    try {
+      if (currentConversation != null && currentConversation != undefined) {
+
+        const APICall = 'http://localhost:3000/inbox/' + currentConversation;
+        let response = await axios.get(APICall)
         this.messages = response.data.messages;
-      })
-      .catch(error => {
-        console.log(error);
-      });
+      }
+    } catch (e) {
+    }
   }
 }
 </script>
@@ -143,7 +144,6 @@ export default {
 
 #chat-content {
   height: 75vh;
-  display: flex;
   flex-direction: column;
   overflow: scroll;
 }
@@ -153,7 +153,8 @@ export default {
   padding: 10px;
   border-radius: 10px;
   background-color: #dcf8c6;
-  align-self: flex-end;
+  max-width: 500px;
+  display: inline-flex;
 }
 
 .received-message {
@@ -162,5 +163,7 @@ export default {
   border-radius: 10px;
   background-color: #f4f4f4;
   align-self: flex-start;
+  display: inline-flex;
+
 }
 </style>
