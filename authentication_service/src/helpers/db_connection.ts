@@ -22,12 +22,11 @@ export async function query(str: String, arr?: any) {
         return JSON.parse(JSON.stringify(val));
     } catch (e: any) {
         if (e instanceof BaseError) {
-            console.log(e)
             throw e;
         }
         throw new BaseError({errno: 2, error: e.toString()});
     } finally {
-        if(connection !=null){
+        if (connection != null) {
             await connection.end()
         }
 
@@ -38,7 +37,7 @@ export async function query(str: String, arr?: any) {
 export const init = async () => {
     try {
         connection = await mysql.createConnection({
-            host: process.env.MY_SQL_DB_HOST ,
+            host: process.env.MY_SQL_DB_HOST,
             user: process.env.MY_SQL_DB_USER,
             password: process.env.MY_SQL_DB_PASSWORD,
             port: +process.env.MY_SQL_DB_PORT ?? 6603,

@@ -1,9 +1,10 @@
 <template>
   <div class="container">
-    <NavBar class="navbar" />
+    <NavBar class="navbar"/>
     <div class="content-container">
-      <InboxContainer :getConversationID=getConversationID />
-      <ChatContainer :conversationID=currentConversationID />
+      <InboxContainer :conversation-data=this.conversationData
+                      :getConversationID="this.getConversationID"></InboxContainer>
+      <ChatContainer :conversationID=currentConversationID></ChatContainer>
     </div>
   </div>
 </template>
@@ -14,6 +15,7 @@ import HeaderChat from './components/HeaderChat.vue'*/
 import InboxContainer from '../components/ChatInboxContainer.vue';
 import ChatContainer from '../components/ChatContainer.vue'
 import NavBar from '../components/ChatNavBar.vue'
+import axios from "axios";
 
 export default {
   name: 'App',
@@ -21,25 +23,40 @@ export default {
     NavBar,
     InboxContainer,
     ChatContainer
-},
+  },
   data() {
     return {
       activeUser: null,
-      currentConversationID: null
+      currentConversationID: null,
+      conversationData: []
     };
   },
   methods: {
-    userSelected(user) {
-      this.activeUser = user;
-    },
-    getConversationID(id){
+    getConversationID(id) {
       this.currentConversationID = id;
-      console.log("response from app.vue")
       return this.currentConversationID;
     }
+
   },
-  created() {
-    this.getConversationID()
+
+  async created() {
+    // This will be based on the userID that we get from Toni's microservice
+    await axios.get(`http://localhost:3000/userConversations/`).then(response => {
+      console.log("Response succesful")
+      this.conversationData = response.data.conversations;
+      this.currentConversationID = this.conversationData[0]._id
+    }).catch(error => {
+      console.error(error)
+    });
+
+    for (let [i, v] of this.conversationData.entries()) {
+      let data = await axios.get("http://localhost:5555/products/getPost", {
+        params: {
+          post_id: v.itemId
+        }
+      })
+      this.conversationData[i].data = data.data.data;
+    }
   }
 };
 </script>
@@ -65,14 +82,14 @@ export default {
   align-items: center;
   justify-content: space-between;
   padding: 0 20px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.content-container{
-    width: 100vw;
-    height: 100%;
-    background: rgb(236, 236, 236);
-    display: flex;
+.content-container {
+  width: 100vw;
+  height: 100%;
+  background: rgb(236, 236, 236);
+  display: flex;
 }
 
 .headers {

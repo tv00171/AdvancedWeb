@@ -2,7 +2,7 @@
   <v-container>
     <v-row>
       <v-col cols="12" md="6">
-        <v-img src="https://via.placeholder.com/350x250" alt="Product Image" />
+        <v-img alt="Product Image" src="https://via.placeholder.com/350x250"/>
       </v-col>
       <v-col cols="12" md="6">
         <v-card>
@@ -11,14 +11,14 @@
           </v-card-title>
 
           <v-card-subtitle class="grey--text">
-            User Name: Testovici
+            User Name: Hardcoded name
           </v-card-subtitle>
 
           <v-card-subtitle class="grey--text">
-            Email: test@gmail.com
+            Email: hardcoded@gmail.com
           </v-card-subtitle>
 
-          <v-divider class="my-4" />
+          <v-divider class="my-4"/>
 
           <v-card-text>
             {{ product.description }}
@@ -29,7 +29,7 @@
               £{{ product.price }}
             </span>
             <v-btn color="primary" variant="outlined" @click="makePayment">Buy Now</v-btn>
-            <v-btn color="secondary" variant="outlined">chat with seller</v-btn>
+            <v-btn color="secondary" variant="outlined" @click="createChat">chat with seller</v-btn>
           </v-card-actions>
         </v-card>
       </v-col>
@@ -39,8 +39,8 @@
 
 <script>
 import axios from "axios";
-import { loadStripe } from "@stripe/stripe-js";
-import { ref } from "vue";
+import {loadStripe} from "@stripe/stripe-js";
+import router from "@/router";
 
 
 export default {
@@ -51,13 +51,14 @@ export default {
         description: "No data",
         id: 7,
         name: "No data",
-        price: 500,
+        price: 0,
+        user_id: null
       },
     };
   },
 
 
-  async mounted() {
+  async created() {
     await this.fetchProducts();
   },
   methods: {
@@ -79,8 +80,8 @@ export default {
         };
 
         let response;
-        try{
-           response = await axios.post(
+        try {
+          response = await axios.post(
             "http://localhost:8000/api/create-checkout-session",
             {
               product,
@@ -88,12 +89,10 @@ export default {
             {headers: headers}
           );
 
-        }catch (e) {
+        } catch (e) {
           console.log(e)
         }
         const session = await response.data;
-
-        console.log("Getting here")
 
         const result = await stripe.redirectToCheckout({
           sessionId: session.id,
@@ -112,7 +111,7 @@ export default {
     },
 
     fetchProducts: async function () {
-      let { post_id } = this.$route.params;
+      let {post_id} = this.$route.params;
 
       let response = await axios.get("http://localhost:5555/products/getPost", {
         params: {
@@ -124,6 +123,20 @@ export default {
       console.log(responseData)
       this.product = responseData;
     },
+
+    async createChat() {
+      try {
+        await axios.post("http://localhost:3000/userConversations/createConversation", {
+          sellerID: this.product.user_id,
+          itemID: this.product.id,
+          itemSrc: "Empty Link"
+        })
+      } catch (e) {
+        console.log(e)
+      }
+
+      router.push('/messaging/')
+    }
   },
 };
 </script>
