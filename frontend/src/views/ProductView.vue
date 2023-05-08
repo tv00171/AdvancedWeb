@@ -2,7 +2,7 @@
   <v-container>
     <v-row>
       <v-col cols="12" md="6">
-        <v-img src="https://via.placeholder.com/350x250" alt="Product Image" />
+        <v-img alt="Product Image" src="https://via.placeholder.com/350x250"/>
       </v-col>
       <v-col cols="12" md="6">
         <v-card>
@@ -11,14 +11,14 @@
           </v-card-title>
 
           <v-card-subtitle class="grey--text">
-            User Name: Testovici
+            User Name: Hardcoded name
           </v-card-subtitle>
 
           <v-card-subtitle class="grey--text">
-            Email: test@gmail.com
+            Email: hardcoded@gmail.com
           </v-card-subtitle>
 
-          <v-divider class="my-4" />
+          <v-divider class="my-4"/>
 
           <v-card-text>
             {{ product.description }}
@@ -29,7 +29,7 @@
               £{{ product.price }}
             </span>
             <v-btn color="primary" variant="outlined" @click="makePayment">Buy Now</v-btn>
-            <v-btn color="secondary" variant="outlined">chat with seller</v-btn>
+            <v-btn color="secondary" variant="outlined" @click="createChat">chat with seller</v-btn>
           </v-card-actions>
         </v-card>
       </v-col>
@@ -39,8 +39,8 @@
 
 <script>
 import axios from "axios";
-import { loadStripe } from "@stripe/stripe-js";
-import { ref } from "vue";
+import {loadStripe} from "@stripe/stripe-js";
+import router from "@/router";
 
 
 export default {
@@ -51,63 +51,65 @@ export default {
         description: "No data",
         id: 7,
         name: "No data",
-        price: "No data",
+        price: 0,
+        user_id: null
       },
     };
   },
-  
-  setup() {
-    const product = ref({
-      name: "144Hz Philips Monitor",
-      price: 150,
-      productOwner: "Kevin Hart",
-      description:
-        "This is a 144Hz Monitor used only for 2 months. Still new, no scratches.",
-      quantity: 1,
-    });
 
-    const makePayment = async () => {
-      const stripe = await loadStripe(
-        "pk_test_51Mw6PuBqA4vdmyT3DGXZ9eBdIRFTPLXPOqR1LfklpaNGOx3FDTEiyR2dF8z3y4KrLYbDRQNtiq9voa4SchcKgCGZ00l0bZae5Q"
-      );
 
-      const body = { product: product.value };
-      const headers = {
-        "Content-Type": "application/json",
-      };
-
-      const response = await fetch(
-        "http://localhost:8000/api/create-checkout-session",
-        {
-          method: "POST",
-          headers: headers,
-          body: JSON.stringify(body),
-        }
-      );
-
-      const session = await response.json();
-
-      const result = await stripe.redirectToCheckout({
-        sessionId: session.id,
-      });
-
-      if (result.error) {
-        console.log(result.error);
-      }
-    };
-
-    return {
-      product,
-      makePayment,
-    };
-  },
-
-  mounted() {
-    this.fetchProducts();
+  async created() {
+    await this.fetchProducts();
   },
   methods: {
+    makePayment() {
+      let product = {
+        name: this.product.name,
+        price: this.product.price,
+        description: this.product.description,
+        quantity: 1,
+        productOwner: "Kevin Hart",
+      }
+      const makePayment = async () => {
+
+        const stripe = await loadStripe(
+          "pk_test_51Mw6PuBqA4vdmyT3DGXZ9eBdIRFTPLXPOqR1LfklpaNGOx3FDTEiyR2dF8z3y4KrLYbDRQNtiq9voa4SchcKgCGZ00l0bZae5Q"
+        );
+        const headers = {
+          "Content-Type": "application/json",
+        };
+
+        let response;
+        try {
+          response = await axios.post(
+            "http://localhost:8000/api/create-checkout-session",
+            {
+              product,
+            },
+            {headers: headers}
+          );
+
+        } catch (e) {
+        }
+        const session = await response.data;
+
+        const result = await stripe.redirectToCheckout({
+          sessionId: session.id,
+        });
+
+        if (result.error) {
+        }
+      };
+
+      makePayment();
+      return {
+        product,
+        makePayment,
+      };
+    },
+
     fetchProducts: async function () {
-      let { post_id } = this.$route.params;
+      let {post_id} = this.$route.params;
 
       let response = await axios.get("http://localhost:5555/products/getPost", {
         params: {
@@ -116,9 +118,21 @@ export default {
       });
 
       const responseData = await response.data.data;
-      console.log(responseData)
       this.product = responseData;
     },
+
+    async createChat() {
+      try {
+        await axios.post("http://localhost:3000/userConversations/createConversation", {
+          sellerID: this.product.user_id,
+          itemID: this.product.id,
+          itemSrc: "Empty Link"
+        })
+      } catch (e) {
+      }
+
+      router.push('/messaging/')
+    }
   },
 };
 </script>

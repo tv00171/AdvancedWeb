@@ -11,11 +11,10 @@ export default class AuthService {
      */
     static async login(email: string, password: string) {
         let user;
-        try{
+        try {
             user = await this.getUser({email: email})
 
-        }
-        catch (e){
+        } catch (e) {
             throw new BaseError({error: e, errno: 4, status: 401})
         }
         if (user == null) {
@@ -47,11 +46,10 @@ export default class AuthService {
 
     }
 
-    static async getUserByToken(token: string){
-        console.log(token)
+    static async getUserByToken(token: string) {
         const user = (await query('SELECT * FROM users WHERE session_token = ?', [token]))[0];
-        if(user == null){
-            throw new BaseError({error: "Token not valid", errno:6 })
+        if (user == null) {
+            throw new BaseError({error: "Token not valid", errno: 6})
         }
         return user;
     }
@@ -64,11 +62,11 @@ export default class AuthService {
      */
     static async getUser(fields: { id?: number, email?: string }) {
         if (fields.id != null) {
-           const user =  (await query('SELECT * FROM users WHERE id = ?', [fields.id]))[0]
+            const user = (await query('SELECT * FROM users WHERE id = ?', [fields.id]))[0]
             return user == null ? null : UserModel.fromJSON(user)
         } else if (fields.email != null) {
 
-           const user =  (await query('SELECT * FROM users WHERE email = ?', [fields.email]))[0]
+            const user = (await query('SELECT * FROM users WHERE email = ?', [fields.email]))[0]
 
             return user == null ? null : UserModel.fromJSON(user)
         } else {

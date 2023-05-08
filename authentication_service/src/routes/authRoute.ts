@@ -45,13 +45,28 @@ routes.post('/register', async (req, res) => {
     }
 });
 
-routes.get('/userInfo',async (req, res) => {
+routes.get('/userInfo', async (req, res) => {
     try {
         const token = req.query.token;
         if (token == null) {
-            throw new BaseError({error: "Missing userId", errno: 3, status: 400})
+            throw new BaseError({error: "Missing token", errno: 3, status: 400})
         }
         const result = await AuthService.getUserByToken(token.toString());
+        return res.json({success: true, payload: result});
+    } catch (e) {
+        if (e instanceof BaseError) {
+            return res.status(e.status).json(e.toJSON())
+        }
+        return res.status(500).json({success: false, error: e.toString(), errno: 0})
+    }
+});
+routes.get('/userInfoById', async (req, res) => {
+    try {
+        const userId = req.query.id;
+        if (userId == null) {
+            throw new BaseError({error: "Missing userId", errno: 3, status: 400})
+        }
+        const result = await AuthService.getUser({id: +userId});
         return res.json({success: true, payload: result});
     } catch (e) {
         if (e instanceof BaseError) {

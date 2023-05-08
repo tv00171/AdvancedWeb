@@ -2,7 +2,7 @@ FROM node:16-alpine
 
 WORKDIR /payment-microservice
 
-COPY server/package*.json ./
+COPY package*.json ./
 
 RUN npm install
 
