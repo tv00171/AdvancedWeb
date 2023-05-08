@@ -1,23 +1,16 @@
 <template>
+  <Header></Header>
   <v-container>
     <v-row>
       <v-col cols="12" md="6">
-        <v-img alt="Product Image" src="https://via.placeholder.com/350x250"/>
+        <v-img alt="Product Image" src="../assets/img.png"/>
       </v-col>
       <v-col cols="12" md="6">
         <v-card>
           <v-card-title>
             <h2 class="headline mb-0">{{ product.name }}</h2>
           </v-card-title>
-
-          <v-card-subtitle class="grey--text">
-            User Name: Hardcoded name
-          </v-card-subtitle>
-
-          <v-card-subtitle class="grey--text">
-            Email: hardcoded@gmail.com
-          </v-card-subtitle>
-
+          
           <v-divider class="my-4"/>
 
           <v-card-text>
@@ -41,9 +34,11 @@
 import axios from "axios";
 import {loadStripe} from "@stripe/stripe-js";
 import router from "@/router";
+import Header from "@/components/Header.vue";
 
 
 export default {
+  components: {Header},
   data() {
     return {
       products: [],
