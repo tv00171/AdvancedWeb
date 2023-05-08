@@ -3,7 +3,7 @@
         <ul id="navbar-list">
             <li id="logo">
                 <h3>SwiftShop</h3>
-                <img src="/logo.png"/>
+<!--                <img src="/logo.png"/>-->
             </li>
             <li id="search-bar"><input type="text" placeholder="Enter the product you are looking for..."/></li>
             <li id="profile-pic"></li>
@@ -106,14 +106,14 @@
     border-radius: 30px;
     border-style: solid;
     padding-left: 20px;
-    padding-left: 20px; 
+    padding-left: 20px;
 }
 
 .navbar #search-bar{
     width: 50%;
 }
 
-.navbar #logo{  
+.navbar #logo{
     display: flex;
     flex-direction: row;
     align-content:center;
