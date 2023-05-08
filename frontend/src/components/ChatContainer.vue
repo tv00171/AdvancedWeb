@@ -1,6 +1,6 @@
 <template>
   <div id="chat-container">
-    <div id="chat-content">
+    <div id="chat-content" style="overflow-y: scroll;">
       <div v-for="(message, index) in messages" :key="index"
            :class="{ 'sent-message': message.sender === 'me', 'received-message': message.sender !== 'me' }">
         <p>{{ message.message }}</p>
@@ -145,7 +145,7 @@ export default {
   height: 75vh;
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
+  overflow: scroll;
 }
 
 .sent-message {

@@ -1,11 +1,9 @@
 <template>
-  <div class="container">
-    <NavBar class="navbar"/>
-    <div class="content-container">
-      <InboxContainer :conversation-data=this.conversationData
-                      :getConversationID="this.getConversationID"></InboxContainer>
-      <ChatContainer :conversationID=currentConversationID></ChatContainer>
-    </div>
+  <Header/>
+  <div class="content-container">
+    <InboxContainer :conversation-data=this.conversationData
+                    :getConversationID="this.getConversationID"></InboxContainer>
+    <ChatContainer :conversationID=currentConversationID></ChatContainer>
   </div>
 </template>
 
@@ -14,13 +12,14 @@
 import HeaderChat from './components/HeaderChat.vue'*/
 import InboxContainer from '../components/ChatInboxContainer.vue';
 import ChatContainer from '../components/ChatContainer.vue'
-import NavBar from '../components/ChatNavBar.vue'
 import axios from "axios";
+import Header from "@/components/Header.vue";
+
 
 export default {
   name: 'App',
   components: {
-    NavBar,
+    Header,
     InboxContainer,
     ChatContainer
   },
@@ -64,16 +63,6 @@ export default {
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&display=swap');
 
-* {
-  margin: 0;
-  padding: 0;
-}
-
-.container {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-}
 
 .navbar {
   background-color: white;
