@@ -57,7 +57,7 @@ const router = createRouter({
 })
 
 router.beforeEach((to) => {
-  const whitelist = ['/login']
+  const whitelist = ['/login', '/signup']
   if (localStorage.getItem('user') == null && !whitelist.includes(to.path)) {
     return '/login'
   }
