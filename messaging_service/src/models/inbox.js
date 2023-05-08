@@ -1,34 +1,34 @@
 const mongoose = require('mongoose');
 
 const messageSchema = new mongoose.Schema({
-    userID : {
+    userID: {
         type: Number,
         required: true
     },
-    message : {
+    message: {
         type: String,
         required: true
     },
-    timestamp : {
+    timestamp: {
         type: Date,
-        default: Date.now    
+        default: Date.now
     }
 });
 
 const inboxSchema = new mongoose.Schema({
-    conversationID : {
+    conversationID: {
         type: Number,
-        required: true
+        required: false
     },
-    itemID : {
+    itemID: {
         type: Number,
-        required: true
+        required: true,
     },
-    itemSrc : {
+    itemSrc: {
         type: String,
         required: true
     },
-    messages : {
+    messages: {
         type: [messageSchema],
         required: true
     }

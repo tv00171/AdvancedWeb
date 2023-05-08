@@ -7,6 +7,6 @@ dotenv.config();
 
 (async () => {
     app.listen(4444, () => {
-        console.log(`Example app listening on port 4444`)
+        console.log(`Authentication service listening on port 4444`)
     });
 })()

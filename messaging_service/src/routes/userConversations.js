@@ -15,74 +15,104 @@ const mongoose = require('mongoose')
 // })
 
 // Getting one conversation
-router.get('/:id', getConversationIDs, async (req, res) =>{
-    try{
-        const listOfIds = res.conversation;
-        const conversations = await getConversations(listOfIds);
-        console.log(conversations);
+router.get('/', async (req, res) => {
+    try {
+        let conversationObj;
 
-        const conversationProps = conversations.map((conversation) =>{
-            return{
-              _id: conversation._id,
-              itemName: conversation.itemName,
-              itemSrc: conversation.itemSrc  
+        try {
+            conversationObj = await UserConversation.findOne({userID: res.locals.user.id})
+            if (conversationObj == null) {
+                return res.status(404).json({message: 'Cannot find conversation'})
+            }
+        } catch (err) {
+            return res.status(500).json({error: err.message})
+        }
+
+        const listOfIds = conversationObj.conversations;
+        const conversations = await Conversation.find({_id: {$in: listOfIds}});
+
+        const conversationProps = conversations.map((conversation) => {
+            return {
+                _id: conversation._id,
+                itemName: conversation.itemName,
+                itemSrc: conversation.itemSrc,
+                itemId: conversation.itemID,
             };
         });
 
-        res.json({ "conversations": conversationProps });
-    } catch (error){
+        return res.json({"conversations": conversationProps});
+    } catch (error) {
         console.error(error);
-        res.status(500).json({error:'Internal Error'})
+        res.status(500).json({error: 'Internal Error'})
     }
-    
+
 });
 
 // Creating a conversation ( via Contact seller from Listing microservice)
 router.post('/createConversation', async (req, res) => {
     const itemID = req.body.itemID;
-    const newConversationID = new mongoose.Types.ObjectId();
+    const sellerID = req.body.sellerID;
     const userID = res.locals.user.id;
-    const newConversationItemObj = { conversationID: newConversationID, itemID: itemID };
+    const newConversationID = new mongoose.Types.ObjectId();
 
     try {
-        const existingConversation = await Conversation.exists({ itemID });
+        const conversationObj = await UserConversation.findOne({userID: res.locals.user.id})
+        if (conversationObj != null) {
+            const existingConversation = await Conversation.findOne({
+                $and: [
+                    {_id: {$in: conversationObj.conversations}},
+                    {itemID}
+                ]
+            });
+            if (existingConversation != null) {
+                return res.status(409).json({error: 'Conversation already exists item'});
+            }
+        }
+        const conversation = new Conversation({
+            itemID: itemID,
+            itemSrc: req.body.itemSrc,
+            messages: [],
+        });
 
-        if (existingConversation) {
-            return res.status(409).json({ error: 'Conversation already exists item' });
-        } 
-        else {
-            const conversation = new Conversation({
-                _id: newConversationID,
-                itemID: itemID,
-                itemSrc: req.body.itemSrc,
-                messages: [],
+        const newConversation = await conversation.save();
+
+        const existingUserConversations = await UserConversation.findOne({userID});
+        const existingSellerConversation = await UserConversation.findOne({userID: sellerID});
+
+        if (existingUserConversations) {
+            await UserConversation.updateOne({userID}, {$push: {conversations: newConversation}})
+        } else {
+            const userConversation = new UserConversation({
+                _id: new mongoose.Types.ObjectId(),
+                userID: userID,
+                conversations: [newConversation]
             });
 
-            const newConversation = await conversation.save();
-
-            const existingUserConversations = await UserConversation.exists({  userID });
-
-            if (existingUserConversations) {
-                return res.status(409).json({ message: 'Conversation already exists user' });
-            } else {
-                const userConversation = new UserConversation({
-                    _id: new mongoose.Types.ObjectId(),
-                    userID: userID,
-                    conversations: [newConversationItemObj]
-                });
-
-                const newUserConversation = await userConversation.save();
-            }
-
-            return res.status(200).json({ message: `Successfully created conversation for ${itemID}` });
+            await userConversation.save();
         }
+
+        if (existingSellerConversation) {
+            await UserConversation.updateOne({userID: sellerID}, {$push: {conversations: newConversation}})
+        } else {
+            const userConversation = new UserConversation({
+                _id: new mongoose.Types.ObjectId(),
+                userID: sellerID,
+                conversations: [newConversation]
+            });
+
+            await userConversation.save();
+        }
+
+        return res.status(200).json({message: `Successfully created conversation for ${itemID}`});
+
     } catch (err) {
-        return res.status(400).json({ error: err.message });
+        console.log(err)
+        return res.status(400).json({error: err.message});
     }
 });
 
 
-//API call to post message   
+//API call to post message
 router.post('/sendMessage', async (req, res) => {
     const currentMessage = req.body.message;
     const messageObject = {
@@ -90,16 +120,16 @@ router.post('/sendMessage', async (req, res) => {
         message: currentMessage,
         timestamp: Date.now()
     };
-    
+
     try {
         // Retrieve the conversation ID from the request body or wherever it's available
         const conversationID = req.body.conversationID;
 
         // Find the conversation by its ID
-        const conversation = await Conversation.findByIdAndUpdate(conversationID, {$push:{messages: messageObject}}, {new: true});
+        const conversation = await Conversation.findByIdAndUpdate(conversationID, {$push: {messages: messageObject}}, {new: true});
 
         if (!conversation) {
-            return res.status(404).json({ error: 'Conversation not found' });
+            return res.status(404).json({error: 'Conversation not found'});
         }
 
         // Append the messageObject to the messages array
@@ -108,9 +138,9 @@ router.post('/sendMessage', async (req, res) => {
         // Save the updated conversation
         //const updatedConversation = await conversation.save();
 
-        res.status(200).json(updatedConversation);
+        res.status(200).json({message: "Message sent"});
     } catch (err) {
-        res.status(400).json({ error: err.message });
+        res.status(400).json({error: err.message});
     }
 });
 
@@ -118,27 +148,9 @@ router.post('/sendMessage', async (req, res) => {
 /*
 // Update conversation (add messages)
 router.patch('/', (req, res) => {
-    
+
 })*/
-async function getConversations(listOfIds){
-    const data = await Conversation.find({_id: {$in:listOfIds}});
-    return data;
+async function getConversations(listOfIds) {
 }
 
-async function getConversationIDs(req,res, next) {
-    let conversationObj;
-    
-    try {
-        conversationObj = await UserConversation.findById(req.params.id)
-        if (conversationObj == null){
-            return res.status(404).json({ message: 'Cannot find conversation'})
-        }
-    } catch (err) {
-        return res.status(500).json({ error: err.message})
-    }
-
-    res.conversation = conversationObj.conversations;
-    next();
-}
-
-module.exports=router
+module.exports = router
