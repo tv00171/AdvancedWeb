@@ -56,4 +56,10 @@ const router = createRouter({
   routes,
 })
 
+router.beforeEach((to) => {
+  const whitelist = ['/login']
+  if (localStorage.getItem('user') == null && !whitelist.includes(to.path)) {
+    return '/login'
+  }
+})
 export default router

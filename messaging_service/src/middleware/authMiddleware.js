@@ -7,7 +7,7 @@ async function authMiddleware(req, res, next) {
         return res.status(400).json({success: false, error: 'No token'})
     }
     try {
-        var userInfo = await axios.get(`http://auth_service:4444/userInfo`, {params: {token: token}})
+        var userInfo = await axios.get(`http://${process.env.AUTH_URL}:4444/userInfo`, {params: {token: token}})
     } catch (e) {
         return res.status(401).json({message: "Token not valid"})
     }
