@@ -7,7 +7,7 @@
 <script setup>
 import axios from "axios";
 
-axios.interceptors.request.use(function (config) {
+axios.interceptors.request.use(async function (config) {
   if (localStorage.getItem('user') != null) {
     const user = JSON.parse(localStorage.getItem('user'))
     const token = user.session.session_token

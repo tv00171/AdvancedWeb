@@ -58,11 +58,11 @@ routes.get('/products/getPost', async (req, res) => {
     try {
         const result = await query(queryString, [id]);
         if (result.length == 0) {
-            return res.status(400);
+            return res.json({status: false, data: []});
         }
-        res.json({status: true, data: result[0]});
+        return res.json({status: true, data: result[0]});
     } catch (error) {
-        res.status(500).json({message: 'SERVER ERROR', error});
+        return res.status(500).json({message: 'SERVER ERROR', error});
     }
 })
 

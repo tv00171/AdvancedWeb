@@ -36,7 +36,7 @@ export default {
       <font-awesome-icon :icon="['fas', 'inbox']"/>
     </div>
     <div id="inbox-content">
-      <ul>
+      <ul style="overflow: scroll; height: 100%">
         <li v-for="conversation in conversationData" :key="conversation._id">
           <ConversationHeader :currentHeaderClass=currentHeaderClass :itemName=conversation.data?.name
                               :itemSrc=conversation.itemSrc :resetHeaderClasses=resetConversationHeaderClass

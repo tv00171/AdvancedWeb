@@ -90,7 +90,6 @@ export default {
           );
 
         } catch (e) {
-          console.log(e)
         }
         const session = await response.data;
 
@@ -99,7 +98,6 @@ export default {
         });
 
         if (result.error) {
-          console.log(result.error);
         }
       };
 
@@ -120,7 +118,6 @@ export default {
       });
 
       const responseData = await response.data.data;
-      console.log(responseData)
       this.product = responseData;
     },
 
@@ -132,7 +129,6 @@ export default {
           itemSrc: "Empty Link"
         })
       } catch (e) {
-        console.log(e)
       }
 
       router.push('/messaging/')
