@@ -60,7 +60,6 @@ export default {
     try {
       const response = await axios.get(`http://localhost:3000/userConversations/`)
       this.conversationData = response.data.conversations;
-      this.currentConversationID = this.conversationData[0]._id
 
       await this.getPostsData()
     } catch (e) {
